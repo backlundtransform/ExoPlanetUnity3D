@@ -5,7 +5,6 @@ public class RotatePlanet : MonoBehaviour
     public float xAngle, yAngle, zAngle;
     private GameObject _sun, _planet;
 
-    // Start is called before the first frame update
     void Start()
     {
         Material Planet = Resources.Load("Planet_B", typeof(Material)) as Material;
