@@ -4,13 +4,18 @@ public class RotatePlanet : MonoBehaviour
 {
   
     public float xAngle, yAngle, zAngle;
-
+    public float SkyboxSpeed = 1f;
 
     private GameObject _sun, _planet;
 
   
     internal void Start()
     {
+        //Todo find correct rotation 
+        RenderSettings.skybox.SetFloat("_Rotation", 90);
+
+
+
         Material Planet = Resources.Load("Planet_B", typeof(Material)) as Material;
         Material Sun = Resources.Load("Sun", typeof(Material)) as Material;
         _sun = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -29,6 +34,7 @@ public class RotatePlanet : MonoBehaviour
 
     internal void Update()
     {
+      
         _planet.transform.RotateAround(_sun.transform.localPosition, Vector3.up, Time.deltaTime);
     }
 }

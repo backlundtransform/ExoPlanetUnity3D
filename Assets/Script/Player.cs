@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.XR;
 
 public class Player : MonoBehaviour
 {
@@ -7,60 +8,54 @@ public class Player : MonoBehaviour
     public float zstep = 1.0f;
     public float xstep = 1.0f;
     public float ystep = 1.0f;
+    public GameObject world;
+  
 
 
-    void Awake()
+    void Start()
     {
-     
-        Camera.main.transform.position = new Vector3(0.85f, 1.0f, -3.0f);
+
+
+        world = GameObject.FindWithTag("Player");
+        world.transform.position = new Vector3(xstep, ystep, zstep);
+
 
     }
+  
 
     void Update()
     {
-     
-        if (Input.GetKey(KeyCode.UpArrow))
+        world = GameObject.FindWithTag("Player");
+        if (Input.GetButtonDown("Fire1")) {
+            Camera.main.transform.position = new Vector3(xstep, ystep, zstep++);
+        }
+        if (OVRInput.Get(OVRInput.RawButton.DpadUp))
         {
-            Camera.main.transform.position = new Vector3(xstep, ystep--, zstep);
-          
-
+            world.transform.position = new Vector3(xstep, ystep, zstep++);
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (OVRInput.Get(OVRInput.Button.DpadDown))
         {
-            Camera.main.transform.position = new Vector3(xstep--, ystep, zstep);
-
-
+            world.transform.position = new Vector3(xstep, ystep, zstep--);
         }
+        if (Input.GetAxis("Oculus_GearVR_DpadX") > 0f)
+        {
+         
+        }
+
+ 
 
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
-            Camera.main.transform.position = new Vector3(xstep, ystep, ++zstep);
-
-
+          
+                world.transform.position = new Vector3(xstep, ystep, zstep++);
+     
+       
         }
         if (Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
-            Camera.main.transform.position = new Vector3(xstep, ystep, --zstep);
-
-
-        }
-
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            Camera.main.transform.position = new Vector3(xstep++, ystep, zstep);
-
-
-        }
-
-
-
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            Camera.main.transform.position = new Vector3(xstep, ystep++, zstep);
-
-
         
+               world.transform.position = new Vector3(xstep, ystep, zstep--);
 
         }
 

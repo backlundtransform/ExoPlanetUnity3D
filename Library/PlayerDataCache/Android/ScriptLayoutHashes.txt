@@ -7,7 +7,7 @@ SceneListEnd?
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.ONSPVersion
 984dcc0ba3707b7691fbdca8ff508d28 Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.OvrAvatarBody
-dbfe265d007083a662ec0a2060899d32 Assembly-CSharp.dll:.RotatePlanet
+36fd791eec173194d6d5c06d8d481d17 Assembly-CSharp.dll:.RotatePlanet
 378473cd766bacf5d5af658c64010333 Oculus.VR.dll:.OVRMixedRealityCaptureSettings
 01aa15e337e3a9c62f15153dfac6d589 Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
 0c0d3eddccfa04ba0b09ec59e165e009 Oculus.VR.dll:.OVRCameraRig
@@ -157,7 +157,7 @@ c62775f7279ea30b4981a8322d28585a Assembly-CSharp.dll:Oculus.Platform.Samples.Sim
 5777c70a25f193ad387a5581565b81b9 Assembly-CSharp.dll:OVR.AudioManager
 303ad70ce203ad874efe2965d0fbcff9 Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsEventTracker
 7fb9de8dcf73854b6b328eca1f7a6e6d Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsTracker
-08700cc8a2df1cab982cbc5485622b2f Assembly-CSharp.dll:.Player
+370a6fb22d8a664ca26d371d4f468ba8 Assembly-CSharp.dll:.Player
 e269129a92a880f5211d20d6b89e9cf1 Assembly-CSharp.dll:Oculus.Platform.Samples.VrBoardGame.IAPManager
 6ccef259da155e93c32ed2677c987be7 Assembly-CSharp.dll:.TeleportTransitionWarp
 cb390f72d3bbd992cfa547449a4873e7 Assembly-CSharp.dll:OculusSampleFramework.DistanceGrabber
