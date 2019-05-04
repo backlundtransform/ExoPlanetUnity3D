@@ -157,7 +157,7 @@ c62775f7279ea30b4981a8322d28585a Assembly-CSharp.dll:Oculus.Platform.Samples.Sim
 5777c70a25f193ad387a5581565b81b9 Assembly-CSharp.dll:OVR.AudioManager
 303ad70ce203ad874efe2965d0fbcff9 Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsEventTracker
 7fb9de8dcf73854b6b328eca1f7a6e6d Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsTracker
-370a6fb22d8a664ca26d371d4f468ba8 Assembly-CSharp.dll:.Player
+be0a270e4d712c9de12990f774c316ab Assembly-CSharp.dll:.Player
 e269129a92a880f5211d20d6b89e9cf1 Assembly-CSharp.dll:Oculus.Platform.Samples.VrBoardGame.IAPManager
 6ccef259da155e93c32ed2677c987be7 Assembly-CSharp.dll:.TeleportTransitionWarp
 cb390f72d3bbd992cfa547449a4873e7 Assembly-CSharp.dll:OculusSampleFramework.DistanceGrabber
@@ -329,3 +329,4 @@ cd06391f9225499fb9ea605ab668b015 Assembly-CSharp.dll:Oculus.Platform.Samples.VrH
 8cf111447f1f4754264a4de62c3f57df Assembly-CSharp.dll:.OVRLipSyncContextTextureFlip
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.DebugUISample
 a56a51f2e505cce24d6eab45b4026f5d Assembly-CSharp.dll:.OVRVoiceModContext
+370a6fb22d8a664ca26d371d4f468ba8 Assembly-CSharp.dll:.InputAccepter
