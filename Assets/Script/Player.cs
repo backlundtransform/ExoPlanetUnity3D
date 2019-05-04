@@ -38,26 +38,6 @@ public class Player : MonoBehaviour
         {
             world.transform.position = new Vector3(xstep, ystep, zstep--);
         }
-        if (Input.GetAxis("Oculus_GearVR_DpadX") > 0f)
-        {
-         
-        }
-
- 
-
-        if (Input.GetAxis("Mouse ScrollWheel") > 0f)
-        {
-          
-                world.transform.position = new Vector3(xstep, ystep, zstep++);
-     
-       
-        }
-        if (Input.GetAxis("Mouse ScrollWheel") < 0f)
-        {
-        
-               world.transform.position = new Vector3(xstep, ystep, zstep--);
-
-        }
-
+    
     }
 }
