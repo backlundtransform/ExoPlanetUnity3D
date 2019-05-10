@@ -348,6 +348,7 @@
     <Compile Include="Assets\Script\Player.cs" />
     <Compile Include="Assets\Script\RotatePlanet.cs" />
     <Compile Include="Assets\Script\UpdateEyeAnchors.cs" />
+    <Compile Include="Assets\Script\VRRaycaster.cs" />
     <None Include="Assets\Oculus\Avatar\Content\Materials\AvatarMaterialStateShader.cginc" />
     <None Include="Assets\Oculus\Avatar\Samples\CrossPlatform\Readme.txt" />
     <None Include="Assets\Oculus\Avatar\Resources\Materials\Version1.5\Avatar_PC_SingleComponent.shader" />
