@@ -268,6 +268,7 @@ aa82b3ce4c0c9b227036c0337315c5d3 Unity.TextMeshPro.dll:TMPro.TMP_FontAsset
 e51c09a4cc447f11db225afcd8e3e490 Unity.TextMeshPro.dll:TMPro.TMP_Settings
 a4b88f3b08f1f148e04c6c3d7544c9ec Oculus.VR.dll:.OVRChromaticAberration
 3a0fa4528690e89614a27f9b88a889c4 Oculus.VR.dll:.OVRSceneSampleController
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.AddCelestialObjectsToMap
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:Oculus.Platform.Samples.VrHoops.PlatformManager
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.OvrAvatarSettingsEditor
 8b9f42d72019bde2f9fe0667762eaff3 Assembly-CSharp.dll:.OvrAvatarProjectorRenderComponent
@@ -332,4 +333,4 @@ cd06391f9225499fb9ea605ab668b015 Assembly-CSharp.dll:Oculus.Platform.Samples.VrH
 8cf111447f1f4754264a4de62c3f57df Assembly-CSharp.dll:.OVRLipSyncContextTextureFlip
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.DebugUISample
 a56a51f2e505cce24d6eab45b4026f5d Assembly-CSharp.dll:.OVRVoiceModContext
-71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.AddCelestialObjectsToMap
+54edf36b0cde4fb5253755a3582248b2 Assembly-CSharp.dll:.Script

@@ -36,7 +36,7 @@ public class RotatePlanet : MonoBehaviour
       
         GameObject newGO = new GameObject("myTextGO");
         ngo.transform.SetParent(this.transform);
-
+         
         Text myText = ngo.AddComponent<Text>();
         myText.text = SceneVariables.StarId;
 
