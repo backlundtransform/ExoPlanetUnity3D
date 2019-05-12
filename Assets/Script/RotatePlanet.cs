@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Assets.Script;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class RotatePlanet : MonoBehaviour
 {
@@ -11,10 +13,11 @@ public class RotatePlanet : MonoBehaviour
   
     internal void Start()
     {
+        Debug.Log(SceneVariables.StarId);
         //Todo find correct rotation 
         RenderSettings.skybox.SetFloat("_Rotation", 90);
 
-
+      
 
         Material Planet = Resources.Load("Planet_B", typeof(Material)) as Material;
         Material Sun = Resources.Load("Sun", typeof(Material)) as Material;
@@ -29,6 +32,16 @@ public class RotatePlanet : MonoBehaviour
         _planet.transform.position = new Vector3(4.22f, 4f, 0f);
         _sun.transform.localScale = new Vector3(2, 2, 2);
         _planet.name = "Earth";
+       var ngo = GameObject.FindWithTag("Text");
+      
+        GameObject newGO = new GameObject("myTextGO");
+        ngo.transform.SetParent(this.transform);
+
+        Text myText = ngo.AddComponent<Text>();
+        myText.text = SceneVariables.StarId;
+
+
+
     }
 
 

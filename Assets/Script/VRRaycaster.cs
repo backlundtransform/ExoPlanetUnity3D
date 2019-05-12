@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Assets.Script;
+using UnityEngine;
 using UnityEngine.Events;
-
+using UnityEngine.SceneManagement;
 public class VRRaycaster : MonoBehaviour
 {
 
@@ -14,6 +15,7 @@ public class VRRaycaster : MonoBehaviour
     public float maxRayDistance = 500.0f;
     public LayerMask excludeLayers;
     public VRRaycaster.Callback raycastHitCallback;
+    public GameObject world;
 
     void Awake()
     {
@@ -96,11 +98,24 @@ public class VRRaycaster : MonoBehaviour
             {
                 lineRenderer.SetPosition(1, hit.point);
             }
+            if (SceneManager.GetActiveScene().name == "PlanetSystem") {
+                world = GameObject.FindWithTag("Player");
+                world.transform.position = new Vector3(hit.collider.gameObject.transform.position.x, hit.collider.gameObject.transform.position.y + 10, hit.collider.gameObject.transform.position.z - 10);
+
+            }
+            if (SceneManager.GetActiveScene().name == "StarMap")
+            {
+                SceneVariables.StarId = hit.collider.gameObject.name;
+          
+                SceneManager.LoadScene("PlanetSystem", LoadSceneMode.Single);
+            }
 
             if (raycastHitCallback != null)
             {
                 raycastHitCallback.Invoke(laserPointer, hit);
             }
         }
+      
+       
     }
 }

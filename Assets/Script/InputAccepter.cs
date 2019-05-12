@@ -23,11 +23,11 @@ public class InputAccepter : MonoBehaviour
     void TriggerDown()
     {
         world = GameObject.FindWithTag("Player");
-        world.transform.position = new Vector3(xstep, ystep, zstep++);
+        world.transform.position = new Vector3(world.transform.position.x , world.transform.position.y, world.transform.position.y+1);
     }
     void TriggerUp()
     {
         world = GameObject.FindWithTag("Player");
-        world.transform.position = new Vector3(xstep, ystep, zstep--);
+        world.transform.position = new Vector3(world.transform.position.x, world.transform.position.y, world.transform.position.z-1);
     }
 }
