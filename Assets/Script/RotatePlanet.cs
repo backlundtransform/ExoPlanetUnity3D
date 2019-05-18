@@ -32,13 +32,20 @@ public class RotatePlanet : MonoBehaviour
         _planet.transform.position = new Vector3(4.22f, 4f, 0f);
         _sun.transform.localScale = new Vector3(2, 2, 2);
         _planet.name = "Earth";
-       var ngo = GameObject.FindWithTag("Text");
-      
-        GameObject newGO = new GameObject("myTextGO");
-        ngo.transform.SetParent(this.transform);
-         
-        Text myText = ngo.AddComponent<Text>();
-        myText.text = SceneVariables.StarId;
+   
+        var text = "re3r";
+    
+        GameObject newText = new GameObject(text, typeof(RectTransform));
+        var newTextComp = newText.AddComponent<Text>();
+   
+        newTextComp.text = text;
+        newTextComp.transform.position = new Vector3(4.22f, 4f, 0f);
+
+        newTextComp.color = Color.white;
+        newTextComp.alignment = TextAnchor.MiddleCenter;
+        newTextComp.fontSize = 10;
+
+        newText.transform.SetParent(transform);
 
 
 
