@@ -35,8 +35,8 @@ public class RotatePlanet : MonoBehaviour
 
 
         GameObject text = new GameObject();
-        Text t = text.AddComponent<Text>();
-        t.text = PlayerPrefs.GetString("starId") ;
+        TextMesh t = text.AddComponent<TextMesh>();
+        t.text = PlayerPrefs.GetString("starId");
         t.fontSize = 30;
         t.transform.localEulerAngles += new Vector3(0, 0, 0);
         t.transform.localPosition += new Vector3(14.22f, 7.11f, 40f);

@@ -106,8 +106,8 @@ public class VRRaycaster : MonoBehaviour
             if (SceneManager.GetActiveScene().name == "StarMap")
             {
                 SceneVariables.StarId = hit.collider.gameObject.name;
-                //PlayerPrefs.SetString("starId","EEEEE");
-               // PlayerPrefs.Save();
+                PlayerPrefs.SetString("starId", hit.collider.gameObject.name);
+                PlayerPrefs.Save();
                 SceneManager.LoadScene("PlanetSystem", LoadSceneMode.Single);
             }
 
