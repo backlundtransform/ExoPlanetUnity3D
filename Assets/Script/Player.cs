@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public static UnityAction onTriggerUp= null;
     public static UnityAction onTuchpadUp = null;
     public static UnityAction onTuchpadDown = null;
+    public static UnityAction onBackButtonDown = null;
     private bool hasController = false;
     public float speed = 1.0f;
     public float zstep = 1.0f;
@@ -17,8 +18,8 @@ public class Player : MonoBehaviour
     public GameObject world;
     private bool inputActive = true;
     public Transform controller;
-    public static bool leftHanded { get; private set; }
-    System.IO.StreamWriter recording;
+    public static bool _leftHanded { get; private set; }
+    System.IO.StreamWriter _recording;
 
     private void Awake()
     {
@@ -35,7 +36,7 @@ public class Player : MonoBehaviour
     void Start()
     {
 
-        leftHanded = OVRInput.GetControllerPositionTracked(OVRInput.Controller.LTouch);
+        _leftHanded = OVRInput.GetControllerPositionTracked(OVRInput.Controller.LTouch);
         world = GameObject.FindWithTag("Player");
         world.transform.position = new Vector3(xstep, ystep, zstep);
 
@@ -76,6 +77,11 @@ public class Player : MonoBehaviour
         if (OVRInput.GetDown(OVRInput.Button.PrimaryTouchpad))
         {
             onTuchpadDown?.Invoke();
+        }
+
+        if (OVRInput.GetDown(OVRInput.Button.Back))
+        {
+            onBackButtonDown?.Invoke();
         }
         float triggerValue = OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);
         if (triggerValue > 0.5f)

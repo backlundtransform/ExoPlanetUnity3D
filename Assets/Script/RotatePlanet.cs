@@ -29,7 +29,7 @@ public class RotatePlanet : MonoBehaviour
 
         _planet = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         _planet.GetComponent<Renderer>().material = Planet;
-        _planet.transform.position = new Vector3(4.22f, 4f, 0f);
+        _planet.transform.position = new Vector3(14.22f, 7.11f, 20f);
         _sun.transform.localScale = new Vector3(2, 2, 2);
         _planet.name = "Earth";
 
@@ -45,7 +45,6 @@ public class RotatePlanet : MonoBehaviour
 
     internal void Update()
     {
-      
         _planet.transform.RotateAround(_sun.transform.localPosition, Vector3.up, Time.deltaTime);
     }
 }

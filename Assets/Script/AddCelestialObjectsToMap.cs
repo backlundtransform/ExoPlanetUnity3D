@@ -1,20 +1,29 @@
-﻿using UnityEngine;
+﻿using Assets.Script.Models;
+using System.Collections.Generic;
+using UnityEngine;
+using System;
 
 public class AddCelestialObjectsToMap : MonoBehaviour
 {
-    private GameObject _planet;
+
     void Start()
     {
 
-        Material Planet = Resources.Load("OrbGlow", typeof(Material)) as Material;
+        //Todo find correct rotation 
+        RenderSettings.skybox.SetFloat("_Rotation", 10);
+        var stars = new List<Star> { new Star { Name = "Vega", Coordinates = new Vector3((float)(Math.Sin(Math.PI * 18 * 15 / 180) * Math.Cos(Math.PI * 38 / 180)), (float)(Math.Sin(Math.PI * 18*15 / 180)*Math.Sin(Math.PI*38/180)), 40f) }, new Star { Name = "Trappist 1", Coordinates = new Vector3(14.22f, 7.11f, 40f) }, new Star { Name = "Proxima Centauri", Coordinates = new Vector3(0f, 0f, 40f) } };
+        Material OrbGlow = Resources.Load("OrbGlow", typeof(Material)) as Material;
 
-        _planet = GameObject.CreatePrimitive(PrimitiveType.Quad);
-        _planet.GetComponent<Renderer>().material = Planet;
-        _planet.transform.position = new Vector3(14.22f, 7.11f, 40f);
+        foreach (var star in stars) {
+            var marker = new GameObject();
+            marker = GameObject.CreatePrimitive(PrimitiveType.Quad);
+            marker.GetComponent<Renderer>().material = OrbGlow;
+            marker.transform.position = star.Coordinates;
 
-        _planet.transform.localScale = new Vector3(20, 20, 20);
-        _planet.name = "Trappist 1";
-
+            marker.transform.localScale = new Vector3(5, 5, 5);
+            marker.name =star.Name;
+        }
+  
     }
 
     // Update is called once per frame
