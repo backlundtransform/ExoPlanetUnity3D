@@ -27,13 +27,14 @@ public class AddCelestialObjectsToMap : MonoBehaviour
             new Star { Name = "Proxima Centauri", Coordinates = new Vector3(13f, 11f, 40f) } };
         var orbGlow = Resources.Load("OrbGlow", typeof(Material)) as Material;
        var glowBig = Resources.Load("GlowBig", typeof(Material)) as Material;
-        foreach (var star in solarsystem) {
-            GenerateMarkers(star, glowBig, "star");
+        foreach (var star in solarsystem)
+        {
 
+            GenerateMarkers(star, glowBig, star.Name);
         }
         foreach (var star in stars)
         {
-            GenerateMarkers(star, orbGlow, "system");
+            GenerateMarkers(star, orbGlow, "star");
 
         }
     }
@@ -57,11 +58,9 @@ public class AddCelestialObjectsToMap : MonoBehaviour
         marker = GameObject.CreatePrimitive(PrimitiveType.Quad);
         marker.GetComponent<Renderer>().material = material;
         marker.transform.position = star.Coordinates;
-
         marker.transform.localScale = new Vector3(5, 5, 5);
-        marker.name = star.Name;
-        marker.tag = tag;
-     GameObject text = new GameObject();
+        marker.name =tag;
+        GameObject text = new GameObject();
         TextMesh t = text.AddComponent<TextMesh>();
         t.text = star.Name;
         t.fontSize = 14;
