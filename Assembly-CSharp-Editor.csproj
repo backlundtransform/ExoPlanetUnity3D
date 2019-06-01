@@ -358,6 +358,9 @@
     <Reference Include="UnityEditor.Purchasing">
       <HintPath>D:/GitHub/ExoPlanetHunterUnity/ExoPlanetUnity3D/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>D:/GitHub/ExoPlanetHunterUnity/ExoPlanetUnity3D/Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>D:/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>

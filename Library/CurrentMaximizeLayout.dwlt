@@ -21,10 +21,10 @@ MonoBehaviour:
     y: 30
     width: 1904
     height: 931
-  m_MinSize: {x: 681, y: 348}
-  m_MaxSize: {x: 12006, y: 8048}
+  m_MinSize: {x: 679, y: 498}
+  m_MaxSize: {x: 14002, y: 14048}
   vertical: 0
-  controlID: 1681
+  controlID: 6731
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -126,10 +126,10 @@ MonoBehaviour:
     y: 0
     width: 1546
     height: 931
-  m_MinSize: {x: 404, y: 348}
-  m_MaxSize: {x: 8004, y: 8048}
+  m_MinSize: {x: 404, y: 498}
+  m_MaxSize: {x: 10002, y: 14048}
   vertical: 1
-  controlID: 1649
+  controlID: 6732
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_MinSize: {x: 404, y: 224}
   m_MaxSize: {x: 8004, y: 4024}
   vertical: 0
-  controlID: 1626
+  controlID: 6733
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -212,7 +212,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 5ceaffffb4eaffffd0eaffff4cedffff58edffff92fbffff9c3c0000
+      m_ExpandedIDs: 5897ffffb497ffffd097ffff4c9affff589afffffc9affff589bffff749bfffff09dfffffc9dffffa49effff009fffff1c9fffff98a1ffffa4a1ffffc8a2ffff24a3ffff40a3ffffbca5ffffc8a5ffff72a6ffffcea6ffffeaa6ffff66a9ffff72a9ffff20aaffff7caaffff98aaffff14adffff20adffffceadffff2aaeffff46aeffffc2b0ffffceb0ffff7ab1ffffd6b1fffff2b1ffff6eb4ffff7ab4ffff28b5ffff84b5ffff9eb5ffffa8b5ffffb4b5ffff1ab6ffff76b6ffff90b6ffff9ab6ffffa6b6ffffeab6ffff46b7ffff62b7ffffdeb9ffffeab9ffff40beffff9cbeffffb8beffff34c1ffff40c1ffffd8c2ffff34c3ffff4ec3ffff58c3ffff64c3ffffb6c3ffff12c4ffff2ec4ffffaac6ffffb6c6ffff56c9ffffb2c9ffffccc9ffffdac9ffffeac9ffffcecbffff2accffff44ccffff4eccffff5accffffccccffff28cdffff42cdffff4ccdffff58cdffff9ecdfffffacdffff14ceffff1eceffff2aceffff7eceffffdaceffff04cfffff80d1ffff8cd1ffffe6d2ffff44d3ffff60d3ffffdcd5ffffe8d5ffffc8ecffff20edffff3cedffffb8efffffc4effffffef2ffff56f3ffff70f3ffff7af3ffff86f3ffffd2f3ffff2af4ffff44f4ffff4ef4ffff5af4ffffa6f4fffffef4ffff1af5ffff96f7ffffa2f7ffff7afbffff7cfbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -388,14 +388,14 @@ MonoBehaviour:
     y: 555
     width: 1546
     height: 376
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 12}
+  m_MinSize: {x: 230, y: 250}
+  m_MaxSize: {x: 10000, y: 10000}
+  m_ActualView: {fileID: 11}
   m_Panes:
   - {fileID: 11}
   - {fileID: 12}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -434,20 +434,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Oculus/Platform/Samples/VrHoops/Scripts
+    - Assets/Script
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Oculus/Platform/Samples/VrHoops/Scripts
+  - Assets/Script
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\GitHub\ExoPlanetHunterUnity\ExoPlanetUnity3D
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 29}
-    m_SelectedIDs: de2d0000
-    m_LastClickedID: 11742
-    m_ExpandedIDs: 00000000922b0000962b0000e42c0000a02d0000b2330000a6350000d438000036390000ba3a0000
+    scrollPos: {x: 0, y: 11}
+    m_SelectedIDs: 04390000
+    m_LastClickedID: 14596
+    m_ExpandedIDs: 00000000b82b0000bc2b00000a2d00000e310000c6330000d8330000ce350000fc380000583900005e390000e23a000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -475,7 +475,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000922b0000962b0000e42c0000a02d0000b2330000a6350000d438000036390000ba3a0000
+    m_ExpandedIDs: 00000000b82b0000bc2b00000a2d00000e310000c6330000d8330000ce350000fc380000583900005e390000e23a000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -551,10 +551,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 8
-    y: 636
-    width: 1544
-    height: 356
+    x: 0
+    y: 638
+    width: 1557
+    height: 362
   m_PersistentViewDataDictionary: {fileID: 0}
 --- !u!114 &13
 MonoBehaviour:

@@ -1,5 +1,4 @@
-﻿using Assets.Script;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 public class VRRaycaster : MonoBehaviour
@@ -17,6 +16,7 @@ public class VRRaycaster : MonoBehaviour
     public VRRaycaster.Callback raycastHitCallback;
     public GameObject world;
 
+    public bool isLoaded = false;
     void Awake()
     {
         if (leftHandAnchor == null)
@@ -76,6 +76,7 @@ public class VRRaycaster : MonoBehaviour
 
     void Update()
     {
+        if (isLoaded) { 
         Transform pointer = Pointer;
         if (pointer == null)
         {
@@ -105,10 +106,12 @@ public class VRRaycaster : MonoBehaviour
             }
             if (SceneManager.GetActiveScene().name == "StarMap")
             {
-                SceneVariables.StarId = hit.collider.gameObject.name;
+
+               if(hit.collider.gameObject.tag == "system") { 
                 PlayerPrefs.SetString("starId", hit.collider.gameObject.name);
                 PlayerPrefs.Save();
                 SceneManager.LoadScene("PlanetSystem", LoadSceneMode.Single);
+                }
             }
 
             if (raycastHitCallback != null)
@@ -116,7 +119,8 @@ public class VRRaycaster : MonoBehaviour
                 raycastHitCallback.Invoke(laserPointer, hit);
             }
         }
-      
-       
+        }
+        isLoaded = true;
+
     }
 }
