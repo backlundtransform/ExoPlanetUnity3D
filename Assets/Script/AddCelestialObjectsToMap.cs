@@ -4,16 +4,19 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
 using Newtonsoft.Json;
+using Assets.Script.Models.Geo;
+using System.Linq;
 
 public class AddCelestialObjectsToMap : MonoBehaviour
 {
 
    private Vector3 _playerHeadPos = Vector3.zero;
     public LongLat _location;
+    public List<Star> _stars;
     void Start()
     {
         StartCoroutine(GetRequest("http://ip-api.com/json"));
-
+        StartCoroutine(GetStarMarkerRequest("http://exoplanethunter.com/api/Maps/StarMarkers"));
         //Todo find correct rotation 
         // RenderSettings.skybox.SetFloat("_Rotation", 40);
         var stars = new List<Star> {
@@ -26,12 +29,13 @@ public class AddCelestialObjectsToMap : MonoBehaviour
             new Star { Name = "Trappist 1", Coordinates = new Vector3(14.22f, 7.11f, 40f) },
             new Star { Name = "Proxima Centauri", Coordinates = new Vector3(13f, 11f, 40f) } };
         var orbGlow = Resources.Load("OrbGlow", typeof(Material)) as Material;
-       var glowBig = Resources.Load("GlowBig", typeof(Material)) as Material;
+
+        var glowBig = Resources.Load("OrbGlowExtreme", typeof(Material)) as Material;
         foreach (var star in solarsystem)
         {
-
             GenerateMarkers(star, glowBig, star.Name);
         }
+
         foreach (var star in stars)
         {
             GenerateMarkers(star, orbGlow, "star");
@@ -74,6 +78,23 @@ public class AddCelestialObjectsToMap : MonoBehaviour
         yield return uwr.SendWebRequest();
         _location =  JsonConvert.DeserializeObject<LongLat>(uwr.downloadHandler.text);
 
+
+    }
+
+    IEnumerator GetStarMarkerRequest(string uri)
+    {
+        UnityWebRequest uwr = UnityWebRequest.Get(uri);
+        yield return uwr.SendWebRequest();
+        _stars = JsonConvert.DeserializeObject<FeatureCollection>(uwr.downloadHandler.text).Features.Select(o=>new Star { Name=o.Properties.Name, Coordinates = new Vector3(40f * (Mathf.Sin(Mathf.PI * o.Geometry.Coordinates.First() / 180) * Mathf.Cos(Mathf.PI * o.Geometry.Coordinates.Last() / 180)),
+            40f * (Mathf.Sin(Mathf.PI * o.Geometry.Coordinates.First() / 180) * Mathf.Sin(Mathf.PI * o.Geometry.Coordinates.Last() / 180)), 40f)
+         }).ToList();
+
+        var orbGlow = Resources.Load("OrbGlow", typeof(Material)) as Material;
+        foreach (var star in _stars)
+        {
+            GenerateMarkers(star, orbGlow, "star");
+
+        }
 
     }
 }

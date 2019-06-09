@@ -347,6 +347,10 @@
     <Compile Include="Assets\Oculus\VoiceMod\Scripts\OVRVoiceModContext.cs" />
     <Compile Include="Assets\Script\AddCelestialObjectsToMap.cs" />
     <Compile Include="Assets\Script\InputAccepter.cs" />
+    <Compile Include="Assets\Script\Models\Geo\Feature.cs" />
+    <Compile Include="Assets\Script\Models\Geo\FeatureCollection.cs" />
+    <Compile Include="Assets\Script\Models\Geo\Geometry.cs" />
+    <Compile Include="Assets\Script\Models\Geo\Properties.cs" />
     <Compile Include="Assets\Script\Models\LongLat.cs" />
     <Compile Include="Assets\Script\Models\Planet.cs" />
     <Compile Include="Assets\Script\Models\SceneVariables.cs" />
@@ -596,6 +600,9 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>D:/GitHub/ExoPlanetHunterUnity/ExoPlanetUnity3D/Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>D:/GitHub/ExoPlanetHunterUnity/ExoPlanetUnity3D/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
@@ -604,9 +611,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>D:/GitHub/ExoPlanetHunterUnity/ExoPlanetUnity3D/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>D:/GitHub/ExoPlanetHunterUnity/ExoPlanetUnity3D/Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:/Unity/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
