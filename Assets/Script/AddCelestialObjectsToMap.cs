@@ -19,10 +19,7 @@ public class AddCelestialObjectsToMap : MonoBehaviour
         StartCoroutine(GetStarMarkerRequest("http://exoplanethunter.com/api/Maps/StarMarkers"));
         //Todo find correct rotation 
         // RenderSettings.skybox.SetFloat("_Rotation", 40);
-        var stars = new List<Star> {
-            new Star { Name = "Vega", Coordinates = new Vector3(40f*(Mathf.Sin(Mathf.PI * 18 * 15 / 180) * Mathf.Cos(Mathf.PI * 38 / 180)), 
-            40f * (Mathf.Sin(Mathf.PI * 18*15 / 180)*Mathf.Sin(Mathf.PI*38/180)), 40f) },
-       };
+   
 
         var solarsystem = new List<Star> {
         
@@ -31,16 +28,12 @@ public class AddCelestialObjectsToMap : MonoBehaviour
         var orbGlow = Resources.Load("OrbGlow", typeof(Material)) as Material;
 
         var glowBig = Resources.Load("OrbGlowExtreme", typeof(Material)) as Material;
+     
         foreach (var star in solarsystem)
         {
             GenerateMarkers(star, glowBig, star.Name);
         }
 
-        foreach (var star in stars)
-        {
-            GenerateMarkers(star, orbGlow, "star");
-
-        }
     }
 
     // Update is called once per frame
@@ -81,13 +74,21 @@ public class AddCelestialObjectsToMap : MonoBehaviour
 
     }
 
+    public Vector3 SphericalToCartesian(float radius, float polar, float elevation)
+    {
+       var outCart = new Vector3();
+        float a = radius * Mathf.Cos(Mathf.PI * elevation / 180);
+        outCart.x = a * Mathf.Cos(Mathf.PI * polar / 180);
+        outCart.y = radius * Mathf.Sin(Mathf.PI * elevation / 180);
+        outCart.z = a * Mathf.Sin(Mathf.PI * polar / 180);
+        return outCart;
+    }
+
     IEnumerator GetStarMarkerRequest(string uri)
     {
         UnityWebRequest uwr = UnityWebRequest.Get(uri);
         yield return uwr.SendWebRequest();
-        _stars = JsonConvert.DeserializeObject<FeatureCollection>(uwr.downloadHandler.text).Features.Select(o=>new Star { Name=o.Properties.Name, Coordinates = new Vector3(40f * (Mathf.Sin(Mathf.PI * o.Geometry.Coordinates.First() / 180) * Mathf.Cos(Mathf.PI * o.Geometry.Coordinates.Last() / 180)),
-            40f * (Mathf.Sin(Mathf.PI * o.Geometry.Coordinates.First() / 180) * Mathf.Sin(Mathf.PI * o.Geometry.Coordinates.Last() / 180)), 40f)
-         }).ToList();
+        _stars = JsonConvert.DeserializeObject<FeatureCollection>(uwr.downloadHandler.text).Features.Select(o=>new Star { Name=o.Properties.Name, Coordinates =  SphericalToCartesian(12, o.Geometry.Coordinates.First(), o.Geometry.Coordinates.Last())}).ToList();
 
         var orbGlow = Resources.Load("OrbGlow", typeof(Material)) as Material;
         foreach (var star in _stars)
