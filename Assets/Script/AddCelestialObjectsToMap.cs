@@ -57,12 +57,9 @@ public class AddCelestialObjectsToMap : MonoBehaviour
         marker.transform.position = star.Coordinates;
         marker.transform.localScale = new Vector3(1, 1, 1);
         marker.name = tag;
-      //  GameObject text = new GameObject();
-      //  TextMesh t = text.AddComponent<TextMesh>();
-      //  t.text = star.Name;
-      //  t.fontSize = 10;
-      //  t.transform.localEulerAngles += new Vector3(90, 0, 0);
-      //  t.transform.localPosition += star.Coordinates;
+      
+     
+    
 
 
     }
@@ -95,7 +92,7 @@ public class AddCelestialObjectsToMap : MonoBehaviour
         var orbGlow = Resources.Load("Sun", typeof(Material)) as Material;
         foreach (var star in _stars)
         {
-            GenerateMarkers(star, orbGlow, "star");
+            GenerateMarkers(star, orbGlow, $" {star.Name}");
 
         }
 

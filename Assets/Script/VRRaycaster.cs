@@ -13,7 +13,7 @@ public class VRRaycaster : MonoBehaviour
     public LineRenderer lineRenderer = null;
     public float maxRayDistance = 500.0f;
     public LayerMask excludeLayers;
-    public VRRaycaster.Callback raycastHitCallback;
+    public Callback raycastHitCallback;
     public GameObject world;
 
     public bool isLoaded = false;
@@ -106,11 +106,16 @@ public class VRRaycaster : MonoBehaviour
             }
             if (SceneManager.GetActiveScene().name == "StarMap")
             {
+                    GameObject text = new GameObject();
+                    TextMesh t = text.AddComponent<TextMesh>();
+                    t.text = hit.collider.gameObject.name;
+                    t.fontSize = 10;  
+                    t.transform.localPosition += hit.collider.gameObject.transform.position;
 
-               if(hit.collider.gameObject.name!= "star") { 
-                PlayerPrefs.SetString("starId", hit.collider.gameObject.name);
-                PlayerPrefs.Save();
-                SceneManager.LoadScene("PlanetSystem", LoadSceneMode.Single);
+                    if (hit.collider.gameObject.name[0]!= ' ') { 
+                   PlayerPrefs.SetString("starId", hit.collider.gameObject.name);
+                   PlayerPrefs.Save();
+                   SceneManager.LoadScene("PlanetSystem", LoadSceneMode.Single);
                 }
             }
 
