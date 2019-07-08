@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 public class VRRaycaster : MonoBehaviour
@@ -15,7 +16,7 @@ public class VRRaycaster : MonoBehaviour
     public LayerMask excludeLayers;
     public Callback raycastHitCallback;
     public GameObject world;
-
+    private Vector3 _playerHeadPos = Vector3.zero;
     public bool isLoaded = false;
     void Awake()
     {
@@ -73,6 +74,11 @@ public class VRRaycaster : MonoBehaviour
             return centerEyeAnchor;
         }
     }
+    IEnumerator Wait(GameObject text)
+    {
+         yield return new WaitForSeconds(1);
+        Destroy(text);
+    }
 
     void Update()
     {
@@ -99,25 +105,38 @@ public class VRRaycaster : MonoBehaviour
             {
                 lineRenderer.SetPosition(1, hit.point);
             }
-            if (SceneManager.GetActiveScene().name == "PlanetSystem") {
+                if (GameObject.Find("text") == null)
+                {
+                    GameObject text = new GameObject();
+                    text.name = "text";
+                    TextMesh t = text.AddComponent<TextMesh>();
+                    t.text = hit.collider.gameObject.name;
+                    t.fontSize = 14;
+                    t.transform.localPosition += hit.collider.gameObject.transform.position;
+                    OVRNodeStateProperties.GetNodeStatePropertyVector3(UnityEngine.XR.XRNode.Head, NodeStatePropertyType.Position, OVRPlugin.Node.Head, OVRPlugin.Step.Render, out _playerHeadPos);
+
+                    t.transform.LookAt(new Vector3(_playerHeadPos.x, _playerHeadPos.y, _playerHeadPos.z));
+                    t.transform.Rotate(Vector3.up - new Vector3(0, 180, 0));
+                    StartCoroutine(Wait(text));
+                }
+          
+         
+                if (SceneManager.GetActiveScene().name == "PlanetSystem") {
                 world = GameObject.FindWithTag("Player");
                 world.transform.position = new Vector3(hit.collider.gameObject.transform.position.x, hit.collider.gameObject.transform.position.y + 10, hit.collider.gameObject.transform.position.z - 10);
 
             }
             if (SceneManager.GetActiveScene().name == "StarMap")
             {
-                    GameObject text = new GameObject();
-                    TextMesh t = text.AddComponent<TextMesh>();
-                    t.text = hit.collider.gameObject.name;
-                    t.fontSize = 10;  
-                    t.transform.localPosition += hit.collider.gameObject.transform.position;
-
-                    if (hit.collider.gameObject.name[0]!= ' ') { 
+                 
+      
+              if (hit.collider.gameObject.name[0]!= ' ') { 
                    PlayerPrefs.SetString("starId", hit.collider.gameObject.name);
                    PlayerPrefs.Save();
                    SceneManager.LoadScene("PlanetSystem", LoadSceneMode.Single);
                 }
-            }
+                  
+                }
 
             if (raycastHitCallback != null)
             {
@@ -128,4 +147,5 @@ public class VRRaycaster : MonoBehaviour
         isLoaded = true;
 
     }
+ 
 }

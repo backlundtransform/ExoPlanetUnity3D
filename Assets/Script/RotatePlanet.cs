@@ -27,14 +27,9 @@ public class RotatePlanet : MonoBehaviour
         _planet.transform.position = new Vector3(14.22f, 7.11f, 20f);
         _sun.transform.localScale = new Vector3(2, 2, 2);
         _planet.name = "Earth";
-
-
-        GameObject text = new GameObject();
-        TextMesh t = text.AddComponent<TextMesh>();
-        t.text = PlayerPrefs.GetString("starId");
-        t.fontSize = 30;
-        t.transform.localEulerAngles += new Vector3(0, 0, 0);
-        t.transform.localPosition += new Vector3(14.22f, 7.11f, 40f);
+ 
+     //PlayerPrefs.GetString("starId");
+    
     }
 
 
