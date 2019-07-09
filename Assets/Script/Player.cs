@@ -84,10 +84,7 @@ public class Player : MonoBehaviour
             onBackButtonDown?.Invoke();
         }
         float triggerValue = OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);
-        if (triggerValue > 0.5f)
-        {
-
-        }
+     
 
     }
     private void PlayerFound()

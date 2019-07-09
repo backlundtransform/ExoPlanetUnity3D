@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 498}
   m_MaxSize: {x: 14004, y: 14048}
   vertical: 0
-  controlID: 285
+  controlID: 2266
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 498}
   m_MaxSize: {x: 10002, y: 14048}
   vertical: 1
-  controlID: 234
+  controlID: 2267
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 224}
   m_MaxSize: {x: 8006, y: 4024}
   vertical: 0
-  controlID: 211
+  controlID: 2268
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -174,8 +174,8 @@ MonoBehaviour:
     y: 0
     width: 377
     height: 555
-  m_MinSize: {x: 202, y: 224}
-  m_MaxSize: {x: 4002, y: 4024}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 6}
   m_Panes:
   - {fileID: 6}
@@ -212,7 +212,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 54dfffffb8dfffffd2dfffffdcdfffffe8dfffff2ee0ffff92e0ffffaee0ffff2ae3ffff36e3ffffe0e3ffff44e4ffff60e4ffffdce6ffffe8e6ffffc2e7ffff26e8ffff42e8ffffbeeaffffcaeaffff7eebffffe2ebfffffeebffff7aeeffff86eeffff6eefffffd2efffffeeefffff6af2ffff76f2ffff28f3ffff8cf3ffffa8f3ffff24f6ffff30f6ffff
+      m_ExpandedIDs: 88b2fffff0b2ffff0ab3ffff14b3ffff20b3ffff66b3ffffceb3ffffeab3ffff66b6ffff72b6ffff16b7ffff7eb7ffff9ab7ffff16baffff22baffffcabaffff32bbffff4ebbffffcabdffffd6bdfffffec2ffff66c3ffff82c3fffffec5ffff0ac6fffff8caffff60cbffff7acbffff84cbffff90cbffffd8cbffff40ccffff5cccffffd8ceffffe4ceffffa0cfffff08d0ffff24d0ffffa4d2ffffb4d2ffff70edffffd4edfffffaedffff76f0ffff82f0ffffeaf4ffff4ef5ffff6af5ffffeaf7fffffaf7ffff8afbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -325,9 +325,9 @@ MonoBehaviour:
       speed: 2
       m_Value: 1
   m_Rotation:
-    m_Target: {x: 0, y: 1, z: 0, w: 0}
+    m_Target: {x: 0, y: 0, z: 0, w: 1}
     speed: 2
-    m_Value: {x: 0, y: 1, z: 0, w: 0}
+    m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
     m_Target: 0.5345562
     speed: 2
@@ -434,20 +434,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/MagicParticlesLite/IMG/ParticleMaterials
+    - Assets/Vast Outer Space/Materials
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/MagicParticlesLite/IMG/ParticleMaterials
+  - Assets/Vast Outer Space/Materials
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\GitHub\ExoPlanetHunterUnity\ExoPlanetUnity3D
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 11}
-    m_SelectedIDs: 5a320000
-    m_LastClickedID: 12890
-    m_ExpandedIDs: 00000000b22b0000b62b0000082d000014310000d2330000e4330000de350000123900007039000076390000fc3a000000ca9a3b
+    scrollPos: {x: 0, y: 219.4126}
+    m_SelectedIDs: 6a310000
+    m_LastClickedID: 12650
+    m_ExpandedIDs: 00000000be2b0000c22b0000142d0000262e0000442e0000de330000f0330000ea3500001e39000082390000083b000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -475,7 +475,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000b22b0000b62b0000082d000014310000d2330000e4330000de350000123900007039000076390000fc3a000000ca9a3b
+    m_ExpandedIDs: 00000000be2b0000c22b0000142d0000262e0000442e0000de330000f0330000ea3500001e39000082390000083b000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -527,7 +527,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 0}
+    m_ScrollPosition: {x: 0, y: 260}
     m_GridSize: 64
   m_DirectoriesAreaWidth: 251
 --- !u!114 &12
@@ -551,10 +551,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 638
-    width: 1557
-    height: 362
+    x: 8
+    y: 636
+    width: 1544
+    height: 356
   m_PersistentViewDataDictionary: {fileID: 0}
 --- !u!114 &13
 MonoBehaviour:

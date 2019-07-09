@@ -18,7 +18,7 @@ public class VRRaycaster : MonoBehaviour
     public GameObject world;
     private Vector3 _playerHeadPos = Vector3.zero;
     public bool isLoaded = false;
-    void Awake()
+    public void Awake()
     {
         if (leftHandAnchor == null)
         {
@@ -57,7 +57,7 @@ public class VRRaycaster : MonoBehaviour
         }
     }
 
-    Transform Pointer
+ public Transform Pointer
     {
         get
         {
@@ -74,13 +74,23 @@ public class VRRaycaster : MonoBehaviour
             return centerEyeAnchor;
         }
     }
-    IEnumerator Wait(GameObject text)
+  private  IEnumerator Wait(GameObject text)
     {
          yield return new WaitForSeconds(1);
         Destroy(text);
     }
+    private void GenerateDialog(GameObject text, RaycastHit hit)
+    {
+        TextMesh t = text.AddComponent<TextMesh>();
+        t.text = hit.collider.gameObject.name;
+        t.fontSize = 14;
+        t.transform.localPosition += hit.collider.gameObject.transform.position;
+        OVRNodeStateProperties.GetNodeStatePropertyVector3(UnityEngine.XR.XRNode.Head, NodeStatePropertyType.Position, OVRPlugin.Node.Head, OVRPlugin.Step.Render, out _playerHeadPos);
+        t.transform.LookAt(new Vector3(_playerHeadPos.x, _playerHeadPos.y, _playerHeadPos.z));
+        t.transform.Rotate(Vector3.up - new Vector3(0, 180, 0));
+    }
 
-    void Update()
+    public void Update()
     {
         if (isLoaded) { 
         Transform pointer = Pointer;
@@ -109,14 +119,7 @@ public class VRRaycaster : MonoBehaviour
                 {
                     GameObject text = new GameObject();
                     text.name = "text";
-                    TextMesh t = text.AddComponent<TextMesh>();
-                    t.text = hit.collider.gameObject.name;
-                    t.fontSize = 14;
-                    t.transform.localPosition += hit.collider.gameObject.transform.position;
-                    OVRNodeStateProperties.GetNodeStatePropertyVector3(UnityEngine.XR.XRNode.Head, NodeStatePropertyType.Position, OVRPlugin.Node.Head, OVRPlugin.Step.Render, out _playerHeadPos);
-
-                    t.transform.LookAt(new Vector3(_playerHeadPos.x, _playerHeadPos.y, _playerHeadPos.z));
-                    t.transform.Rotate(Vector3.up - new Vector3(0, 180, 0));
+                    GenerateDialog(text, hit);
                     StartCoroutine(Wait(text));
                 }
           
@@ -126,7 +129,7 @@ public class VRRaycaster : MonoBehaviour
                 world.transform.position = new Vector3(hit.collider.gameObject.transform.position.x, hit.collider.gameObject.transform.position.y + 10, hit.collider.gameObject.transform.position.z - 10);
 
             }
-            if (SceneManager.GetActiveScene().name == "StarMap")
+            if (SceneManager.GetActiveScene().name == "StarMap" && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
             {
                  
       
@@ -142,7 +145,7 @@ public class VRRaycaster : MonoBehaviour
             {
                 raycastHitCallback.Invoke(laserPointer, hit);
             }
-        }
+          }
         }
         isLoaded = true;
 

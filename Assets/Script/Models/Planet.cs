@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Assets.Script.Models
 {
     public class Planet
     {
         public string Name { get; set; }
+        public Star Star { get; set; } 
+        public LongLat Coordinate { get; set; }
     }
 }
