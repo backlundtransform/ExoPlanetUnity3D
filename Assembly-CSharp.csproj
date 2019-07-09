@@ -352,9 +352,12 @@
     <Compile Include="Assets\Script\Models\Geo\Geometry.cs" />
     <Compile Include="Assets\Script\Models\Geo\Properties.cs" />
     <Compile Include="Assets\Script\Models\LongLat.cs" />
+    <Compile Include="Assets\Script\Models\LumType.cs" />
     <Compile Include="Assets\Script\Models\Planet.cs" />
+    <Compile Include="Assets\Script\Models\PlanetType.cs" />
     <Compile Include="Assets\Script\Models\SceneVariables.cs" />
     <Compile Include="Assets\Script\Models\Star.cs" />
+    <Compile Include="Assets\Script\Models\StarType.cs" />
     <Compile Include="Assets\Script\Player.cs" />
     <Compile Include="Assets\Script\RotatePlanet.cs" />
     <Compile Include="Assets\Script\UpdateEyeAnchors.cs" />

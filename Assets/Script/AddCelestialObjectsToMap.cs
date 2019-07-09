@@ -6,6 +6,7 @@ using System.Collections;
 using Newtonsoft.Json;
 using Assets.Script.Models.Geo;
 using System.Linq;
+using System;
 
 public class AddCelestialObjectsToMap : MonoBehaviour
 {
@@ -51,16 +52,18 @@ public class AddCelestialObjectsToMap : MonoBehaviour
     {
         UnityWebRequest uwr = UnityWebRequest.Get(uri);
         yield return uwr.SendWebRequest();
-        _planets = JsonConvert.DeserializeObject<List<Planet>>(uwr.downloadHandler.text);
-         var solarsystem = _planets.Select(o => new Star { Name = o.Star.Name, Coordinates = SphericalToCartesian(30, (float)o.Coordinate.Longitude, (float)o.Coordinate.Latitude) });
+   
+      
+            _planets = JsonConvert.DeserializeObject<List<Planet>>(uwr.downloadHandler.text);
+            var solarsystem = _planets.Select(o => new Star { Name = o.Star.Name, Coordinates = SphericalToCartesian(30, (float)o.Coordinate.Longitude, (float)o.Coordinate.Latitude) });
 
-        var glowBig = Resources.Load("Planet_B", typeof(Material)) as Material;
+            var glowBig = Resources.Load("Planet_B", typeof(Material)) as Material;
 
-        foreach (var star in solarsystem)
-        {
-            GenerateMarkers(star, glowBig, star.Name);
-        }
-
+            foreach (var star in solarsystem)
+            {
+                GenerateMarkers(star, glowBig, star.Name);
+            }
+      
     }
 
     private IEnumerator GetStarMarkerRequest(string uri)

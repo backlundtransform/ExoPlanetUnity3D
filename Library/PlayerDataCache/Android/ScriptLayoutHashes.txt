@@ -8,7 +8,7 @@ SceneListEnd?
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.ONSPVersion
 984dcc0ba3707b7691fbdca8ff508d28 Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.OvrAvatarBody
-36fd791eec173194d6d5c06d8d481d17 Assembly-CSharp.dll:.RotatePlanet
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.RotatePlanet
 378473cd766bacf5d5af658c64010333 Oculus.VR.dll:.OVRMixedRealityCaptureSettings
 01aa15e337e3a9c62f15153dfac6d589 Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
 0c0d3eddccfa04ba0b09ec59e165e009 Oculus.VR.dll:.OVRCameraRig
