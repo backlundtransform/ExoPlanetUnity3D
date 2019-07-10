@@ -8,5 +8,6 @@
         public PlanetType Img { get; set; }
         public double? Eccentricity { get; set; }
        public double? StarDistance { get; set; }
+        public double? Radius { get; set; }
     }
 }

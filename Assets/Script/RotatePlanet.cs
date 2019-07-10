@@ -2,14 +2,17 @@
 using Assets.Script.Models;
 using Newtonsoft.Json;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
 public class RotatePlanet : MonoBehaviour
 {
   
-    private GameObject _sun, _planet;
-    private string _url = "https://exoplanethunter.com/api/";
+    private GameObject _sun;
+
+    private List<GameObject> _planets;
+    private readonly string _url = "https://exoplanethunter.com/api/";
 
     public void Start()
     {
@@ -22,24 +25,40 @@ public class RotatePlanet : MonoBehaviour
         UnityWebRequest uwr = UnityWebRequest.Get(uri);
         yield return uwr.SendWebRequest();
        var solarsystem= JsonConvert.DeserializeObject<Star>(uwr.downloadHandler.text);
-        Material Planet = Resources.Load("Planet_B", typeof(Material)) as Material;
+  
         Material Sun = Resources.Load("Sun", typeof(Material)) as Material;
         _sun = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         _sun.transform.position = new Vector3(14.22f, 7.11f, 40f);
-        _sun.transform.localScale = new Vector3(20, 20, 20);
+        _sun.transform.localScale = new Vector3(2, 2, 2);
         _sun.GetComponent<Renderer>().material = Sun;
         _sun.name = solarsystem.Name;
+        _planets = new List<GameObject>();
 
-        _planet = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        _planet.GetComponent<Renderer>().material = Planet;
-        _planet.transform.position = new Vector3(14.22f, 7.11f, 20f);
-        _sun.transform.localScale = new Vector3(2, 2, 2);
-        _planet.name = "Earth";
+       
+
+        foreach (var planet in solarsystem.Planets) {
+            Material Planet = Resources.Load("Planet_B", typeof(Material)) as Material;
+            var planetobject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            planetobject.GetComponent<Renderer>().material = Planet;
+            var distance = 0.05f * (planet.StarDistance == null ? 0f : (float)planet.StarDistance);
+            var radius= 0.05f * (planet.Radius == null ? 0f : (float)planet.Radius);
+            planetobject.transform.position = new Vector3(14.22f, 7.11f, distance);
+            planetobject.transform.localScale = new Vector3(radius, radius, radius);
+            planetobject.name = planet.Name;
+            _planets.Add(planetobject);
+         
+        }
 
     }
 
     public void Update()
     {
-        _planet.transform.RotateAround(_sun.transform.localPosition, Vector3.up, Time.deltaTime);
+        var i = 0f;
+        foreach (var _planet in _planets)
+        {
+             _planet.transform.RotateAround(_sun.transform.localPosition, Vector3.up, Time.deltaTime+i);
+
+            i = i + 0.1f;
+        }
     }
 }
