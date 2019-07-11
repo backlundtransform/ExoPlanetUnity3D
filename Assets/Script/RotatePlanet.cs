@@ -1,8 +1,10 @@
 ﻿using Assets.Script;
 using Assets.Script.Models;
 using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -26,18 +28,23 @@ public class RotatePlanet : MonoBehaviour
         yield return uwr.SendWebRequest();
        var solarsystem= JsonConvert.DeserializeObject<Star>(uwr.downloadHandler.text);
   
-        Material Sun = Resources.Load("Sun", typeof(Material)) as Material;
+        Material Sun = Resources.Load( Enum.GetName(typeof(StarType), solarsystem.Color), typeof(Material)) as Material;
         _sun = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         _sun.transform.position = new Vector3(14.22f, 7.11f, 40f);
-        _sun.transform.localScale = new Vector3(2, 2, 2);
+        var starradius = 0.05f * (float)solarsystem.Radius;
+        _sun.transform.localScale = new Vector3(starradius, starradius, starradius);
         _sun.GetComponent<Renderer>().material = Sun;
         _sun.name = solarsystem.Name;
+        var habmin = new GameObject { name = "HabZoneMin" };
+        var habmax = new GameObject { name = "HabZoneMin" };
+        habmin.transform.position = new Vector3(14.22f, 7.11f, 40f);
+        habmax.transform.position = new Vector3(14.22f, 7.11f, 40f);
+        habmin.DrawCircle(0.05f * (float)solarsystem.HabZoneMin);
+        habmax.DrawCircle(0.05f * (float)solarsystem.HabZoneMax);
         _planets = new List<GameObject>();
 
-       
-
         foreach (var planet in solarsystem.Planets) {
-            Material Planet = Resources.Load("Planet_B", typeof(Material)) as Material;
+            Material Planet = Resources.Load(GetPlanetType(planet.Img.Uri), typeof(Material)) as Material;
             var planetobject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             planetobject.GetComponent<Renderer>().material = Planet;
             var distance = 0.05f * (planet.StarDistance == null ? 0f : (float)planet.StarDistance);
@@ -45,18 +52,54 @@ public class RotatePlanet : MonoBehaviour
             planetobject.transform.position = new Vector3(14.22f, 7.11f, distance);
             planetobject.transform.localScale = new Vector3(radius, radius, radius);
             planetobject.name = planet.Name;
+            if(!_planets.Any(p=>p.name== planet.Name)) {
             _planets.Add(planetobject);
-         
+            }
+
         }
 
+    }
+
+    private string GetPlanetType(string type) {
+        if (type == "stone")
+        {
+            return "Planet_B";
+        }
+        if (type == "coldstone")
+        {
+            return "Planet_E";
+        }
+        if (type == "hotstone") {
+            return "Planet_L";
+        }
+        if (type == "coldsuperearth") {
+            return "Planet_J";
+        }
+        if (type == "superearth") {
+            return "Planet_D";
+        }
+        if (type == "hotsuperearth") {
+            return "Planet_G";
+        }
+        if (type == "neptunian") {
+            return "Gas_Planet_A";
+        }
+        if (type == "jovian") {
+            return "Gas_Planet_G";
+        }
+        if (type == " hotjupiter") {
+            return "hotjupiter";
+        }
+
+        return "Planet_F";
     }
 
     public void Update()
     {
         var i = 0f;
-        foreach (var _planet in _planets)
+        foreach (var planet in _planets.GroupBy(p => p.name).Select(g => g.FirstOrDefault()).ToList())
         {
-             _planet.transform.RotateAround(_sun.transform.localPosition, Vector3.up, Time.deltaTime+i);
+            planet.transform.RotateAround(_sun.transform.localPosition, Vector3.up, Time.deltaTime+i);
 
             i = i + 0.1f;
         }
