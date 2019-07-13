@@ -4,12 +4,17 @@ namespace Assets.Script
 {
     public static class GameObjectEx
     {
-        public static void DrawCircle(this GameObject container, float radius)
+        public static void DrawCircle(this GameObject container, float radius, float lineWidth, Color color)
         {
             var segments = 360;
             var line = container.AddComponent<LineRenderer>();
             line.useWorldSpace = false;
-
+            line.startWidth = lineWidth;
+            line.endWidth = lineWidth;
+            line.material = new Material(Shader.Find("Sprites/Default"))
+            {
+                color = color 
+            };
             line.positionCount = segments + 1;
 
             var pointCount = segments + 1; 
