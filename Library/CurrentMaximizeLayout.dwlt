@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 498}
   m_MaxSize: {x: 14004, y: 14048}
   vertical: 0
-  controlID: 122
+  controlID: 2387
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -46,7 +46,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 385
+    x: 2349
     y: 81
     width: 1165
     height: 535
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 498}
   m_MaxSize: {x: 10002, y: 14048}
   vertical: 1
-  controlID: 75
+  controlID: 2388
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 224}
   m_MaxSize: {x: 8006, y: 4024}
   vertical: 0
-  controlID: 53
+  controlID: 2389
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -174,8 +174,8 @@ MonoBehaviour:
     y: 0
     width: 377
     height: 555
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 224}
+  m_MaxSize: {x: 4002, y: 4024}
   m_ActualView: {fileID: 6}
   m_Panes:
   - {fileID: 6}
@@ -202,7 +202,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 8
+    x: 1972
     y: 81
     width: 375
     height: 535
@@ -212,7 +212,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 16dffeffc2dffeffdedffeff5ee2feff6ee2feff12ecfeffbeecfeffd8ecfeffe6ecfefff6ecfeffb6f1feff5ef2feff7af2fefffaf4feff0af5fefffe20ffff7a21ffff9421ffff9e21ffffaa21fffff021ffff6c22ffff8822ffff0825ffff1825ffff3cccffffb8ccffffd4ccffff54cfffff64cfffff5ad3ffffced3ffffead3ffff66d6ffff72d6ffff1ad7ffff8ed7ffffa8d7ffffb2d7ffffbed7ffff04d8ffff80d8ffff9cd8ffff1cdbffff2cdbffff50e2ffffc4e2ffffe0e2ffff5ce5ffff68e5ffff18e6ffff8ce6ffffa8e6ffff28e9ffff38e9ffffecedffff60eeffff7ceefffff8f0ffff04f1ffffaaf1ffff1ef2ffff38f2ffff42f2ffff4ef2ffff74f2ffff8ef2ffff98f2ffffa4f2ffffecf2ffff60f3ffff7cf3fffffcf5ffff0cf6ffff
+      m_ExpandedIDs: 7e8ffbff2a90fbffb290fbff2e93fbff3a93fbff7071fcff1c72fcff3872fcffb474fcffc074fcff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -255,8 +255,8 @@ MonoBehaviour:
     y: 0
     width: 1169
     height: 555
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 224}
+  m_MaxSize: {x: 4004, y: 4024}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 8}
@@ -417,7 +417,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 8
+    x: 1972
     y: 636
     width: 1544
     height: 356
@@ -434,20 +434,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Vast Outer Space/Prefabs/Planet_Rings
+    - Assets/Resources
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Vast Outer Space/Prefabs/Planet_Rings
+  - Assets/Resources
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\GitHub\ExoPlanetHunterUnity\ExoPlanetUnity3D
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 193}
-    m_SelectedIDs: 6e330000
-    m_LastClickedID: 13166
-    m_ExpandedIDs: 00000000b22b0000b62b0000082d00001a2e0000382e0000d2330000e4330000de350000123900007039000076390000fe3a000000ca9a3b
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 722c0000
+    m_LastClickedID: 11378
+    m_ExpandedIDs: 000000006e2b0000722b0000c42c0000da2d0000f82d0000a0330000b2330000ac350000e63800004c390000d43a000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -475,7 +475,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000b22b0000b62b0000082d00001a2e0000382e0000d2330000e4330000de3500001239000076390000fe3a0000
+    m_ExpandedIDs: 000000006e2b0000722b0000c42c0000da2d0000f82d0000a0330000b2330000ac350000e63800004c390000d43a000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -500,9 +500,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 422f0000
+    m_LastClickedInstanceID: 12098
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c623000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -575,8 +575,8 @@ MonoBehaviour:
     y: 0
     width: 358
     height: 931
-  m_MinSize: {x: 277, y: 74}
-  m_MaxSize: {x: 4002, y: 4024}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -603,7 +603,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1554
+    x: 3518
     y: 81
     width: 356
     height: 911

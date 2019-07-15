@@ -14,10 +14,11 @@ public class AddCelestialObjectsToMap : MonoBehaviour
     public LongLat _location;
     public List<Star> _stars;
     public List<Planet> _planets;
+    public string _messagr;
     void Start()
     {
         StartCoroutine(GetStarMarkerRequest($"{_url}Maps/StarMarkers"));
-        StartCoroutine(GetHabitablePlanetsRequest($"{_url}ExoSolarSystems/GetHabitablePlanets"));
+        StartCoroutine(GetHabitablePlanetsRequest($"{_url}ExoSolarSystems/GetAllPlanets"));
     }
 
   private void GenerateMarkers(Star star, Material material, string tag)
@@ -26,7 +27,7 @@ public class AddCelestialObjectsToMap : MonoBehaviour
         marker = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         marker.GetComponent<Renderer>().material = material;
         marker.transform.position = star.Coordinates;
-        marker.transform.localScale = new Vector3(1, 1, 1);
+        marker.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
         marker.name = tag;
 
     }
@@ -50,20 +51,22 @@ public class AddCelestialObjectsToMap : MonoBehaviour
 
     private IEnumerator GetHabitablePlanetsRequest(string uri)
     {
+   
         UnityWebRequest uwr = UnityWebRequest.Get(uri);
         yield return uwr.SendWebRequest();
-   
-      
-            _planets = JsonConvert.DeserializeObject<List<Planet>>(uwr.downloadHandler.text);
-            var solarsystem = _planets.Select(o => new Star { Name = o.Star.Name, Coordinates = SphericalToCartesian(30, (float)o.Coordinate.Longitude, (float)o.Coordinate.Latitude) });
 
-            var glowBig = Resources.Load("Planet_B", typeof(Material)) as Material;
+            PlayerPrefs.SetString("stars", uwr.downloadHandler.text);
+            PlayerPrefs.Save();
+
+            _planets = JsonConvert.DeserializeObject<List<Planet>>(uwr.downloadHandler.text);
+            var solarsystem = _planets.Where(p=>p.Coordinate.Longitude!=null && p.Coordinate.Latitude!=null).Select(o => new Star { Name = o.Star.Name, Color=o.Star.Color, HasHab =o.Star.NoHabPlanets>0, Coordinates = SphericalToCartesian(30, (float)o.Coordinate.Longitude, (float)o.Coordinate.Latitude) });
 
             foreach (var star in solarsystem)
             {
-                GenerateMarkers(star, glowBig, star.Name);
+             var glowBig = Resources.Load(star.Color!=null?Enum.GetName(typeof(StarType), star.Color):"Sun", typeof(Material)) as Material;
+             GenerateMarkers(star, glowBig, star.Name);
             }
-      
+
     }
 
     private IEnumerator GetStarMarkerRequest(string uri)

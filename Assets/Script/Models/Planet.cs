@@ -9,5 +9,6 @@
         public double? Eccentricity { get; set; }
        public double? StarDistance { get; set; }
         public double? Radius { get; set; }
+        public bool Hab { get; internal set; }
     }
 }

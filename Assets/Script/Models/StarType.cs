@@ -2,6 +2,6 @@
 {
  public enum StarType
     {
-       Blue,Star_White, Sun, Red
+       Blue,White, Sun, Red
     }
 }

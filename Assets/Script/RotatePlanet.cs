@@ -92,8 +92,8 @@ public class RotatePlanet : MonoBehaviour
         if (type == "jovian") {
             return "Gas_Planet_G";
         }
-        if (type == " hotjupiter") {
-            return "hotjupiter";
+        if (type == "hotjupiter") {
+            return "Gas_Planet_G";
         }
 
         return "Planet_F";
