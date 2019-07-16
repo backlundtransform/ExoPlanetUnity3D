@@ -42,6 +42,7 @@ public class InputAccepter : MonoBehaviour
 
         if (scene == "PlanetSystem")
         {
+          
             SceneManager.LoadScene("StarMap", LoadSceneMode.Single);
         }
         else
