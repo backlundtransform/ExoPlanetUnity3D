@@ -54,6 +54,10 @@ public class VRRaycaster : MonoBehaviour
             lineRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
             lineRenderer.receiveShadows = false;
             lineRenderer.widthMultiplier = 0.02f;
+            lineRenderer.material = new Material(Shader.Find("Sprites/Default"))
+            {
+                color = Color.magenta
+            };
         }
     }
 
@@ -74,10 +78,13 @@ public class VRRaycaster : MonoBehaviour
             return centerEyeAnchor;
         }
     }
-  private  IEnumerator Wait(GameObject text)
+  private  IEnumerator Wait(GameObject text, RaycastHit hit)
     {
-         yield return new WaitForSeconds(1);
+        lineRenderer.material.color = hit.collider.gameObject.name[0] != ' ' ? Color.green : Color.magenta;
+      
+        yield return new WaitForSeconds(1);
         Destroy(text);
+        lineRenderer.material.color = Color.magenta;
     }
     private void GenerateDialog(GameObject text, RaycastHit hit)
     {
@@ -114,13 +121,14 @@ public class VRRaycaster : MonoBehaviour
             if (lineRenderer != null)
             {
                 lineRenderer.SetPosition(1, hit.point);
-            }
+               
+                }
                 if (GameObject.Find("text") == null)
                 {
                     GameObject text = new GameObject();
                     text.name = "text";
                     GenerateDialog(text, hit);
-                    StartCoroutine(Wait(text));
+                    StartCoroutine(Wait(text, hit));
                 }
           
          

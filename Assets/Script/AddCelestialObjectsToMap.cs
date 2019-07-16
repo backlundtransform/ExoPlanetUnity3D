@@ -13,8 +13,8 @@ public class AddCelestialObjectsToMap : MonoBehaviour
     private string _url = "https://exoplanethunter.com/api/";
     public LongLat _location;
     public List<Star> _stars;
-    public List<Planet> _planets;
-    public string _messagr;
+    public static List<Planet> _planets;
+  
     void Start()
     {
         StartCoroutine(GetStarMarkerRequest($"{_url}Maps/StarMarkers"));
@@ -29,6 +29,7 @@ public class AddCelestialObjectsToMap : MonoBehaviour
         marker.transform.position = star.Coordinates;
         marker.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
         marker.name = tag;
+      //  DontDestroyOnLoad(marker);
 
     }
 
@@ -51,14 +52,12 @@ public class AddCelestialObjectsToMap : MonoBehaviour
 
     private IEnumerator GetHabitablePlanetsRequest(string uri)
     {
-   
+        if (_planets == null) { 
         UnityWebRequest uwr = UnityWebRequest.Get(uri);
         yield return uwr.SendWebRequest();
-
-            PlayerPrefs.SetString("stars", uwr.downloadHandler.text);
-            PlayerPrefs.Save();
-
             _planets = JsonConvert.DeserializeObject<List<Planet>>(uwr.downloadHandler.text);
+        }
+
             var solarsystem = _planets.Where(p=>p.Coordinate.Longitude!=null && p.Coordinate.Latitude!=null).Select(o => new Star { Name = o.Star.Name, Color=o.Star.Color, HasHab =o.Star.NoHabPlanets>0, Coordinates = SphericalToCartesian(30, (float)o.Coordinate.Longitude, (float)o.Coordinate.Latitude) });
 
             foreach (var star in solarsystem)
