@@ -81,7 +81,6 @@ public class VRRaycaster : MonoBehaviour
   private  IEnumerator Wait(GameObject text, RaycastHit hit)
     {
         lineRenderer.material.color = hit.collider.gameObject.name[0] != ' ' ? Color.green : Color.magenta;
-      
         yield return new WaitForSeconds(1);
         Destroy(text);
         lineRenderer.material.color = Color.magenta;

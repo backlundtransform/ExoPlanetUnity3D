@@ -29,7 +29,7 @@ public class AddCelestialObjectsToMap : MonoBehaviour
         marker.transform.position = star.Coordinates;
         marker.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
         marker.name = tag;
-      //  DontDestroyOnLoad(marker);
+  
 
     }
 
