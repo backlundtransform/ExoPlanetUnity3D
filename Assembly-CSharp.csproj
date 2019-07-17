@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{C95C31F8-4341-C51D-79B0-38E7C46DA1E6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -347,6 +348,7 @@
     <Compile Include="Assets\Oculus\VoiceMod\Scripts\OVRVoiceModContext.cs" />
     <Compile Include="Assets\Script\AddCelestialObjectsToMap.cs" />
     <Compile Include="Assets\Script\GameObjectEx.cs" />
+    <Compile Include="Assets\Script\InformationDialog.cs" />
     <Compile Include="Assets\Script\InputAccepter.cs" />
     <Compile Include="Assets\Script\Models\Geo\Feature.cs" />
     <Compile Include="Assets\Script\Models\Geo\FeatureCollection.cs" />
