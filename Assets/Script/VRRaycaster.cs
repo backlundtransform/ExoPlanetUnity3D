@@ -119,7 +119,8 @@ public class VRRaycaster : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(laserPointer, out hit, maxRayDistance, ~excludeLayers))
         {
-            if (lineRenderer != null)
+               
+                if (lineRenderer != null)
             {
                 lineRenderer.SetPosition(1, hit.point);
                
@@ -131,9 +132,9 @@ public class VRRaycaster : MonoBehaviour
                     GenerateDialog(text, hit);
                     StartCoroutine(Wait(text, hit));
                 }
-          
-         
-           if (SceneManager.GetActiveScene().name == "PlanetSystem") {
+             
+
+                if (SceneManager.GetActiveScene().name == "PlanetSystem") {
                     if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
                     {
                         PlayerPrefs.SetString("PlanetId", hit.collider.gameObject.name);

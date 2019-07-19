@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEditor;
 public class InputAccepter : MonoBehaviour
 {
     public float speed = 1.0f;
@@ -39,7 +39,7 @@ public class InputAccepter : MonoBehaviour
     private void BackButtonDown()
     {
         var scene = SceneManager.GetActiveScene().name;
-
+      
         if (scene == "PlanetSystem")
         {
           
@@ -47,8 +47,8 @@ public class InputAccepter : MonoBehaviour
         }
         else if (scene == "PlanetInfo")
         {
-
-            SceneManager.LoadScene("PlanetInfo", LoadSceneMode.Single);
+        
+          SceneManager.LoadScene("PlanetSystem", LoadSceneMode.Single);
         }
         else
         {

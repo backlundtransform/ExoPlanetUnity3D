@@ -9,7 +9,15 @@ namespace Assets.Script
 
         private void Awake()
         {
-       
+        
+        }
+
+        private void Update()
+        {
+            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
+            {
+             SceneManager.LoadScene("PlanetSystem", LoadSceneMode.Single);
+            }
         }
 
         private void Start()

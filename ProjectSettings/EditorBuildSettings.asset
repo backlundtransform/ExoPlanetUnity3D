@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/starmap.unity
+    path: Assets/StarMap.unity
     guid: 7a61e7e21bcce584084f1f8549cf72b6
   - enabled: 1
     path: Assets/PlanetSystem.unity
     guid: 0c9557cf146c1a94ab7dc0dcc413d31d
+  - enabled: 1
+    path: Assets/PlanetInfo.unity
+    guid: af10fcbeaf1e84e42b75982df5a2babb
   m_configObjects: {}
