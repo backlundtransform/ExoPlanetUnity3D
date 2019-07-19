@@ -20,6 +20,8 @@ public class VRRaycaster : MonoBehaviour
     public bool isLoaded = false;
     public void Awake()
     {
+       
+
         if (leftHandAnchor == null)
         {
             Debug.LogWarning("Assign LeftHandAnchor in the inspector!");
@@ -131,24 +133,32 @@ public class VRRaycaster : MonoBehaviour
                 }
           
          
-                if (SceneManager.GetActiveScene().name == "PlanetSystem") {
-                world = GameObject.FindWithTag("Player");
+           if (SceneManager.GetActiveScene().name == "PlanetSystem") {
+                    if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
+                    {
+                        PlayerPrefs.SetString("PlanetId", hit.collider.gameObject.name);
+                        PlayerPrefs.Save();
+                        SceneManager.LoadScene("PlanetInfo", LoadSceneMode.Single);
+                    }
+                 world = GameObject.FindWithTag("Player");
                 world.transform.position = new Vector3(hit.collider.gameObject.transform.position.x, hit.collider.gameObject.transform.position.y + 10, hit.collider.gameObject.transform.position.z - 10);
+
 
             }
             if (SceneManager.GetActiveScene().name == "StarMap" && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
             {
-                 
-      
+                
               if (hit.collider.gameObject.name[0]!= ' ') { 
                    PlayerPrefs.SetString("starId", hit.collider.gameObject.name);
                    PlayerPrefs.Save();
                    SceneManager.LoadScene("PlanetSystem", LoadSceneMode.Single);
                 }
                   
-                }
+             }
 
-            if (raycastHitCallback != null)
+              
+
+                if (raycastHitCallback != null)
             {
                 raycastHitCallback.Invoke(laserPointer, hit);
             }

@@ -4,4 +4,7 @@ sceneSetups:
   isActive: 0
 - path: Assets/StarMap.unity
   isLoaded: 1
+  isActive: 0
+- path: Assets/PlanetInfo.unity
+  isLoaded: 1
   isActive: 1

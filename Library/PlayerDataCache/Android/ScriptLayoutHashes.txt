@@ -192,6 +192,7 @@ b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 fe9e00068283ef13b28a703001e08184 Assembly-CSharp.dll:OculusSampleFramework.GrabManager
 32cb18cd5ad8276bea4ff86b3a04274b Assembly-CSharp.dll:OVRTouchSample.HandPose
 f8bdc5302f6dd3ca0d6feb313e913f0a Assembly-CSharp.dll:OculusSampleFramework.OVROverlaySample
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:Assets.Script.InformationDialog
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:Oculus.Platform.Samples.VrHoops.BallEjector
 e6ae40841db498b6e673877ac45ad208 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator

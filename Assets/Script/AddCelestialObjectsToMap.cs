@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using Assets.Script.Models.Geo;
 using System.Linq;
 using System;
+using UnityEngine.SceneManagement;
 
 public class AddCelestialObjectsToMap : MonoBehaviour
 {
@@ -14,12 +15,17 @@ public class AddCelestialObjectsToMap : MonoBehaviour
     public LongLat _location;
     public List<Star> _stars;
     public static List<Planet> _planets;
-  
-    void Start()
+
+    private void Awake()
     {
+       
+       
         StartCoroutine(GetStarMarkerRequest($"{_url}Maps/StarMarkers"));
         StartCoroutine(GetHabitablePlanetsRequest($"{_url}ExoSolarSystems/GetAllPlanets"));
+
     }
+
+
 
   private void GenerateMarkers(Star star, Material material, string tag)
     {

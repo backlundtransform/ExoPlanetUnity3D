@@ -45,6 +45,11 @@ public class InputAccepter : MonoBehaviour
           
             SceneManager.LoadScene("StarMap", LoadSceneMode.Single);
         }
+        else if (scene == "PlanetInfo")
+        {
+
+            SceneManager.LoadScene("PlanetInfo", LoadSceneMode.Single);
+        }
         else
         {
             OVRManager.PlatformUIConfirmQuit();
