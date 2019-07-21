@@ -349,6 +349,7 @@
     <Compile Include="Assets\Script\GameObjectEx.cs" />
     <Compile Include="Assets\Script\InformationDialog.cs" />
     <Compile Include="Assets\Script\InputAccepter.cs" />
+    <Compile Include="Assets\Script\Models\Class1.cs" />
     <Compile Include="Assets\Script\Models\Geo\Feature.cs" />
     <Compile Include="Assets\Script\Models\Geo\FeatureCollection.cs" />
     <Compile Include="Assets\Script\Models\Geo\Geometry.cs" />
