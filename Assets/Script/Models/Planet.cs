@@ -10,5 +10,6 @@
        public double? StarDistance { get; set; }
         public double? Radius { get; set; }
         public bool Hab { get; internal set; }
+        public double RadiusEu { get; set; }
     }
 }
