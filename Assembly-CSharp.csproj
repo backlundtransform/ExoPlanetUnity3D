@@ -346,6 +346,7 @@
     <Compile Include="Assets\Oculus\VoiceMod\Scripts\OVRVoiceMod.cs" />
     <Compile Include="Assets\Oculus\VoiceMod\Scripts\OVRVoiceModContext.cs" />
     <Compile Include="Assets\Script\AddCelestialObjectsToMap.cs" />
+    <Compile Include="Assets\Script\Extentions\Extentions.cs" />
     <Compile Include="Assets\Script\GameObjectEx.cs" />
     <Compile Include="Assets\Script\InformationDialog.cs" />
     <Compile Include="Assets\Script\InputAccepter.cs" />

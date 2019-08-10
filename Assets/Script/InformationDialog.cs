@@ -49,23 +49,29 @@ namespace Assets.Script
             yield return uwr.SendWebRequest();
         
             
-                var planet = JsonConvert.DeserializeObject<List<Planet>>(uwr.downloadHandler.text);
-                m_Text = GetComponent<TextMeshPro>() ?? gameObject.AddComponent<TextMeshPro>();
+                var planet = JsonConvert.DeserializeObject<List<Planet>>(uwr.downloadHandler.text).First();
+             
 
-                m_TextContainer = GetComponent<TextContainer>();
+            var infoarray = new List<string>();
+          infoarray.AddIfNotNull($"Radius {planet.RadiusEu}*Earth", planet.RadiusEu);
+            infoarray.AddIfNotNull($"Mass {planet.Mass}*Earth", planet.Mass);
+            infoarray.AddIfNotNull($"Gravity {planet.Gravity}*Earth", planet.Gravity);
+            infoarray.AddIfNotNull($"Surface Pressure {planet.SurfacePressure}*Earth", planet.SurfacePressure);
+            infoarray.AddIfNotNull($"Escape Velocity {planet.EscapeVelocity}*Earth", planet.EscapeVelocity);
+
+
+
+            foreach (var item in infoarray) { 
+
+            m_Text = GetComponent<TextMeshPro>() ?? gameObject.AddComponent<TextMeshPro>();
+
+            m_TextContainer = GetComponent<TextContainer>();
 
                 m_Text.fontSize = 14;
+                m_Text.transform.localPosition = new Vector3(0, 0, 8);
 
-            //planet.density
-            //planet.mass
-            //planet.gravity
-           //planet.surfacePressure
-           //planet.escapeVelocity
-               m_Text.transform.localPosition = new Vector3(0, 0, 8);
-
-                m_Text.text = $"Radius {planet.First().RadiusEu}*Earth"; 
-  
-
+                m_Text.text = item;
+            }
 
         }
 
