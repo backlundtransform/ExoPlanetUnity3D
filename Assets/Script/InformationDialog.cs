@@ -54,11 +54,19 @@ namespace Assets.Script
 
                 m_TextContainer = GetComponent<TextContainer>();
 
-                m_Text.transform.localPosition = new Vector3(0, 0, 8);
-              
-                m_Text.text = $"Radius {planet.First().RadiusEu}*Earth"; ;
-         
-       
+                m_Text.fontSize = 14;
+
+            //planet.density
+            //planet.mass
+            //planet.gravity
+           //planet.surfacePressure
+           //planet.escapeVelocity
+               m_Text.transform.localPosition = new Vector3(0, 0, 8);
+
+                m_Text.text = $"Radius {planet.First().RadiusEu}*Earth"; 
+  
+
+
         }
 
     }
