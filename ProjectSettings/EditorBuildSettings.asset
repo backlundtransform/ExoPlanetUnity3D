@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/Start.unity
+    guid: d08585e8d098de042939f8feed283447
   - enabled: 1
     path: Assets/StarMap.unity
     guid: 7a61e7e21bcce584084f1f8549cf72b6

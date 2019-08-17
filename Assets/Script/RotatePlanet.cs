@@ -45,7 +45,9 @@ public class RotatePlanet : MonoBehaviour
         _planets = new List<GameObject>();
 
         foreach (var planet in solarsystem.Planets) {
-            Material Planet = Resources.Load(GetPlanetType(planet.Img.Uri), typeof(Material)) as Material;
+            if (!_planets.Any(p => p.name == planet.Name))
+            {
+                Material Planet = Resources.Load(GetPlanetType(planet.Img.Uri), typeof(Material)) as Material;
             var planetobject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             planetobject.GetComponent<Renderer>().material = Planet;
             var distance = 0.05f * (planet.StarDistance == null ? 0f : (float)planet.StarDistance);
@@ -57,7 +59,7 @@ public class RotatePlanet : MonoBehaviour
             path.DrawCircle(Vector3.Distance(_sun.transform.position, planetobject.transform.position), 0.01f, Color.white);
             planetobject.transform.localScale = new Vector3(radius, radius, radius);
             planetobject.name = planet.Name;
-            if(!_planets.Any(p=>p.name== planet.Name)) {
+        
             _planets.Add(planetobject);
             }
 

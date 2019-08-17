@@ -19,9 +19,10 @@ public class AddCelestialObjectsToMap : MonoBehaviour
     private void Awake()
     {
        
-       
+
+        StartCoroutine(GetAllPlanetsRequest($"{_url}ExoSolarSystems/GetAllPlanets"));
         StartCoroutine(GetStarMarkerRequest($"{_url}Maps/StarMarkers"));
-        StartCoroutine(GetHabitablePlanetsRequest($"{_url}ExoSolarSystems/GetAllPlanets"));
+
 
     }
 
@@ -56,7 +57,7 @@ public class AddCelestialObjectsToMap : MonoBehaviour
         return outCart;
     }
 
-    private IEnumerator GetHabitablePlanetsRequest(string uri)
+    private IEnumerator GetAllPlanetsRequest(string uri)
     {
         if (_planets == null) { 
         UnityWebRequest uwr = UnityWebRequest.Get(uri);
@@ -65,12 +66,13 @@ public class AddCelestialObjectsToMap : MonoBehaviour
         }
 
             var solarsystem = _planets.Where(p=>p.Coordinate.Longitude!=null && p.Coordinate.Latitude!=null).Select(o => new Star { Name = o.Star.Name, Color=o.Star.Color, HasHab =o.Star.NoHabPlanets>0, Coordinates = SphericalToCartesian(30, (float)o.Coordinate.Longitude, (float)o.Coordinate.Latitude) });
-
-            foreach (var star in solarsystem)
+     
+        foreach (var star in solarsystem)
             {
              var glowBig = Resources.Load(star.Color!=null?Enum.GetName(typeof(StarType), star.Color):"Sun", typeof(Material)) as Material;
              GenerateMarkers(star, glowBig, star.Name);
             }
+  
 
     }
 
