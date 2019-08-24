@@ -61,16 +61,17 @@ namespace Assets.Script
 
 
 
-            foreach (var item in infoarray) { 
+            for (var i=0;i< infoarray.Count-1; i++)
+            { 
 
             m_Text = GetComponent<TextMeshPro>() ?? gameObject.AddComponent<TextMeshPro>();
 
             m_TextContainer = GetComponent<TextContainer>();
 
-                m_Text.fontSize = 14;
-                m_Text.transform.localPosition = new Vector3(0, 0, 8);
+                m_Text.fontSize = 12;
+                m_Text.transform.localPosition = new Vector3(i, 0, 8);
 
-                m_Text.text = item;
+                m_Text.text = infoarray[i];
             }
 
         }
