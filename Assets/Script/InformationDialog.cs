@@ -14,7 +14,7 @@ namespace Assets.Script
     public class InformationDialog : MonoBehaviour
     {
         private readonly string _url = "https://exoplanethunter.com/api/";
-        private TextMeshPro m_Text;
+     
         private TextContainer m_TextContainer;
 
         public void Start()
@@ -62,13 +62,13 @@ namespace Assets.Script
 
 
             for (var i=0;i< infoarray.Count-1; i++)
-            { 
+            {
+                   
+                var  m_Text = GetComponent<TextMeshPro>() ?? gameObject.AddComponent<TextMeshPro>();
 
-            m_Text = GetComponent<TextMeshPro>() ?? gameObject.AddComponent<TextMeshPro>();
+                m_TextContainer = GetComponent<TextContainer>();
 
-            m_TextContainer = GetComponent<TextContainer>();
-
-                m_Text.fontSize = 12;
+                m_Text.fontSize = 8;
                 m_Text.transform.localPosition = new Vector3(i, 0, 8);
 
                 m_Text.text = infoarray[i];
