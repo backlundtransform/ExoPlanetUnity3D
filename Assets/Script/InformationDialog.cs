@@ -52,26 +52,24 @@ namespace Assets.Script
                 var planet = JsonConvert.DeserializeObject<List<Planet>>(uwr.downloadHandler.text).First();
              
 
-            var infoarray = new List<string>();
-          infoarray.AddIfNotNull($"Radius {planet.RadiusEu}*Earth", planet.RadiusEu);
-            infoarray.AddIfNotNull($"Mass {planet.Mass}*Earth", planet.Mass);
-            infoarray.AddIfNotNull($"Gravity {planet.Gravity}*Earth", planet.Gravity);
-            infoarray.AddIfNotNull($"Surface Pressure {planet.SurfacePressure}*Earth", planet.SurfacePressure);
-            infoarray.AddIfNotNull($"Escape Velocity {planet.EscapeVelocity}*Earth", planet.EscapeVelocity);
+            var infoarray = new Dictionary<string,string>();
+            infoarray.AddIfNotNull("Radius",$"{ planet.RadiusEu}*Earth", planet.RadiusEu);
+            infoarray.AddIfNotNull("Mass",$"{planet.Mass}*Earth", planet.Mass);
+            infoarray.AddIfNotNull("Gravity",$"{planet.Gravity}*Earth", planet.Gravity);
+            infoarray.AddIfNotNull("Surface Pressure",$"{planet.SurfacePressure}*Earth", planet.SurfacePressure);
+            infoarray.AddIfNotNull("Escape Velocity",$"{planet.EscapeVelocity}*Earth", planet.EscapeVelocity);
 
+            var win = Screen.width * 0.6f;
+            var w1 = win * 0.35f; var w2 = win * 0.35f;
 
-
-            for (var i=0;i< infoarray.Count-1; i++)
+            //find out how dispalay a table in vr
+            foreach (var item in infoarray)
             {
-                   
-                var  m_Text = GetComponent<TextMeshPro>() ?? gameObject.AddComponent<TextMeshPro>();
+                GUILayout.BeginHorizontal();
+                GUILayout.Label(item.Key, GUILayout.Width(w1));
+                GUILayout.Label(item.Value, GUILayout.Width(w2));
+                GUILayout.EndHorizontal();
 
-                m_TextContainer = GetComponent<TextContainer>();
-
-                m_Text.fontSize = 8;
-                m_Text.transform.localPosition = new Vector3(i, 0, 8);
-
-                m_Text.text = infoarray[i];
             }
 
         }

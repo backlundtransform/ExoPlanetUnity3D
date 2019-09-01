@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using Assets.Script.Models;
+using System.Collections.Generic;
 
 namespace System.Collections.Generic
 {
     public static class Extensions
     {
-        public static void AddIfNotNull(this List<string> list,string value, object item)
+        public static void AddIfNotNull(this Dictionary<string, string> list, string key,string value, object item)
         {
             if (item != null) {
-                list.Add(value);
+                list.Add(key,value);
             }
         }
     }
