@@ -62,7 +62,7 @@ namespace Assets.Script
             var win = Screen.width * 0.6f;
             var w1 = win * 0.35f; var w2 = win * 0.35f;
 
-            //find out how dispalay a table in vr
+            //find out how dispalay a table in vr World Space UI
             foreach (var item in infoarray)
             {
                 GUILayout.BeginHorizontal();
