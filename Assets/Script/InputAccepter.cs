@@ -25,15 +25,12 @@ public class InputAccepter : MonoBehaviour
 
     private void TriggerDown()
     {
-
         world = GameObject.FindWithTag("Player");
-        world.transform.position = new Vector3(world.transform.position.x, world.transform.position.y, world.transform.position.z + 1);
     }
 
     private void TriggerUp()
     {
         world = GameObject.FindWithTag("Player");
-        world.transform.position = new Vector3(world.transform.position.x, world.transform.position.y, world.transform.position.z - 1);
     }
 
     private void BackButtonDown()

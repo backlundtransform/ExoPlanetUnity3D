@@ -18,11 +18,9 @@ public class AddCelestialObjectsToMap : MonoBehaviour
 
     private void Awake()
     {
-       
 
         StartCoroutine(GetAllPlanetsRequest($"{_url}ExoSolarSystems/GetAllPlanets"));
         StartCoroutine(GetStarMarkerRequest($"{_url}Maps/StarMarkers"));
-
 
     }
 
