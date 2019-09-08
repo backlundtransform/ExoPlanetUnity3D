@@ -18,7 +18,7 @@ namespace Assets.Script
         private void Awake()
         {
             var planetname = PlayerPrefs.GetString("PlanetId");
-
+            //TO DO WHAT IF STAR?
             StartCoroutine(GetExoPlanetByName($"{_url}ExoSolarSystems/ExoPlanets?%24filter=Name%20eq%20%27{HttpUtility.UrlEncode(planetname)}%27"));
 
         }
@@ -29,7 +29,6 @@ namespace Assets.Script
             if (OVRInput.GetDown(OVRInput.Button.Back))
             {
                 SceneManager.LoadScene("PlanetSystem", LoadSceneMode.Single);
-
             }
 
         }
@@ -38,21 +37,26 @@ namespace Assets.Script
             UnityWebRequest uwr = UnityWebRequest.Get(uri);
             yield return uwr.SendWebRequest();
 
-
             var planet = JsonConvert.DeserializeObject<List<Planet>>(uwr.downloadHandler.text).First();
-
-
             var infoarray = new List<string>();
-            infoarray.Add($"Radius {planet.RadiusEu}*Earth");
-            infoarray.Add($"Mass {planet.Mass}*Earth");
-            infoarray.Add($"Gravity {planet.Gravity}*Earth");
-            infoarray.Add($"Surface Pressure {planet.SurfacePressure}*Earth");
-            infoarray.Add($"Escape Velocity {planet.EscapeVelocity}*Earth");
+            infoarray.AddIfNotNull($"Radius {planet.RadiusEu}*Earth", planet.RadiusEu);
+            infoarray.AddIfNotNull($"Mass {planet.Mass}*Earth", planet.Mass);
+            infoarray.AddIfNotNull($"Density {planet.Density} Earth", planet.Density);
+            infoarray.AddIfNotNull($"Gravity {planet.Gravity}*Earth", planet.Gravity);
+            infoarray.AddIfNotNull($"Surface Pressure {planet.SurfacePressure}*Earth", planet.SurfacePressure);
+            infoarray.AddIfNotNull($"Escape Velocity {planet.EscapeVelocity}*Earth",planet.EscapeVelocity);
+            infoarray.AddIfNotNull($"Min Temperature {planet.TempMin} °C", planet.EscapeVelocity);
+            infoarray.AddIfNotNull($"Temperature {planet.Temp} °C", planet.Temp);
+            infoarray.AddIfNotNull($"Max Temperature {planet.TempMax} °C", planet.TempMax);
+            infoarray.AddIfNotNull($"It takes {planet.Period} days for the planet to complete an entire revolution around its star °C", planet.Period);
+            infoarray.AddIfNotNull($"Distance from Star {planet.MeanDistance} AU", planet.MeanDistance);
+            infoarray.AddIfNotNull($"Discovered year {planet.DiscYear}", planet.DiscYear);
 
+            //TO DO ADD DISC METHOD AND HABITABLE
             var r_Text = GetComponent<TextMeshPro>() ?? gameObject.AddComponent<TextMeshPro>();
             r_Text.fontSize = 8;
             r_Text.transform.localPosition = new Vector3(0, 0, 8);
-            r_Text.text = $"Radius {planet.RadiusEu}*Earth\nMass { planet.Mass} *Earth";
+            r_Text.text = string.Join("\n", infoarray);
 
 
 
