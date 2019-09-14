@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/PlanetInfo.unity
     guid: af10fcbeaf1e84e42b75982df5a2babb
+  - enabled: 1
+    path: Assets/SolarInfo.unity
+    guid: 39d33fbb904a8f44ea2dd0f20c8a8b0a
   m_configObjects: {}

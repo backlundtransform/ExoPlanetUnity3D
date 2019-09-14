@@ -51,7 +51,7 @@ public class RotatePlanet : MonoBehaviour
             var planetobject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             planetobject.GetComponent<Renderer>().material = Planet;
             var distance = 0.05f * (planet.StarDistance == null ? 0f : (float)planet.StarDistance);
-            var radius= 0.05f * (planet.Radius == null ? 0f : (float)planet.Radius);
+            var radius= 0.05f *(float)planet.Radius;
             var path = new GameObject { name = "Path" };
             path.transform.position = _sun.transform.position;
 

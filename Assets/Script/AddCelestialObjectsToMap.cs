@@ -18,7 +18,7 @@ public class AddCelestialObjectsToMap : MonoBehaviour
 
     private void Awake()
     {
-
+        SceneManager.LoadScene("SolarInfo", LoadSceneMode.Single);
         StartCoroutine(GetAllPlanetsRequest($"{_url}ExoSolarSystems/GetAllPlanets"));
         StartCoroutine(GetStarMarkerRequest($"{_url}Maps/StarMarkers"));
 

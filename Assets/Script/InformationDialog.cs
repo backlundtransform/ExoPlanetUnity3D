@@ -17,9 +17,19 @@ namespace Assets.Script
 
         private void Awake()
         {
-            var planetname = PlayerPrefs.GetString("PlanetId");
-            //TO DO WHAT IF STAR?
-            StartCoroutine(GetExoPlanetByName($"{_url}ExoSolarSystems/ExoPlanets?%24filter=Name%20eq%20%27{HttpUtility.UrlEncode(planetname)}%27"));
+            if (SceneManager.GetActiveScene().name == "PlanetInfo")
+            {
+                var planetname = PlayerPrefs.GetString("PlanetId");
+                StartCoroutine(GetExoPlanetByName($"{_url}ExoSolarSystems/ExoPlanets?%24filter=Name%20eq%20%27{HttpUtility.UrlEncode(planetname)}%27"));
+            }
+
+            if (SceneManager.GetActiveScene().name == "SolarInfo")
+            {
+                var starname = PlayerPrefs.GetString("starId");
+
+                StartCoroutine(GetExoPStarByName($"{_url}GetExoSolarSystemByName?name%20eq%20%27{HttpUtility.UrlEncode(starname)}%27", $"{_url}ExoSolarSystems/ExoPlanets?%24filter=Name%20eq%20%27"));
+
+            }
 
         }
 
@@ -61,5 +71,27 @@ namespace Assets.Script
 
 
         }
+
+        private IEnumerator GetExoPStarByName(string staruri, string planeturi)
+        {
+            UnityWebRequest uwr = UnityWebRequest.Get(staruri);
+            yield return uwr.SendWebRequest();
+            var star = JsonConvert.DeserializeObject<ExoSolarSystem>(uwr.downloadHandler.text);
+
+            uwr = UnityWebRequest.Get($"{planeturi}{HttpUtility.UrlEncode(star.Planets.First().Name)}%27");
+            yield return uwr.SendWebRequest();
+            var planet= JsonConvert.DeserializeObject<List<Planet>>(uwr.downloadHandler.text).First();
+            var exostar = planet.Star;
+            var infoarray = new List<string>();
+            infoarray.AddIfNotNull(exostar.Name, exostar.HabZoneMax);
+
+            var s_Text = GetComponent<TextMeshPro>() ?? gameObject.AddComponent<TextMeshPro>();
+            s_Text.fontSize = 8;
+            s_Text.transform.localPosition = new Vector3(0, 0, 8);
+            s_Text.text = string.Join("\n", infoarray);
+
+
+        }
+
     }
 }

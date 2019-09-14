@@ -2,9 +2,9 @@
 {
     public static class Extensions
     {
-        public static void AddIfNotNull(this List<string> list, string value, object item)
+        public static void AddIfNotNull(this List<string> list, string value, decimal? item)
         {
-            if (item != null)
+            if (item != null && item!=0)
             {
                 list.Add(value);
             }
