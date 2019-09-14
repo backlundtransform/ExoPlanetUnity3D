@@ -28,7 +28,7 @@
         public int DiscMethod { get; set; }
         public decimal Radius { get; set; }
         public decimal? Eccentricity { get; set; }
-        public decimal RadiusEu { get; set; }
+        public decimal? RadiusEu { get; set; }
 
         public decimal? StarDistance { get; set; }
   

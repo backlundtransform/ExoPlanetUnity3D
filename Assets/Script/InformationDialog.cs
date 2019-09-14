@@ -1,5 +1,6 @@
 ﻿using Assets.Script.Models;
 using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,20 +18,21 @@ namespace Assets.Script
 
         private void Awake()
         {
-            if (SceneManager.GetActiveScene().name == "PlanetInfo")
+           
+            var planetname = PlayerPrefs.GetString("PlanetId");
+            var starname = PlayerPrefs.GetString("starId");
+
+        
+            if (planetname== starname)
             {
-                var planetname = PlayerPrefs.GetString("PlanetId");
+                StartCoroutine(GetExoPStarByName($"{_url}ExoSolarSystems/GetExoSolarSystemByName?name={starname}", $"{_url}ExoSolarSystems/ExoPlanets?%24filter=Name%20eq%20%27"));
+            }
+            else {
+
                 StartCoroutine(GetExoPlanetByName($"{_url}ExoSolarSystems/ExoPlanets?%24filter=Name%20eq%20%27{HttpUtility.UrlEncode(planetname)}%27"));
-            }
-
-            if (SceneManager.GetActiveScene().name == "SolarInfo")
-            {
-                var starname = PlayerPrefs.GetString("starId");
-
-                StartCoroutine(GetExoPStarByName($"{_url}GetExoSolarSystemByName?name%20eq%20%27{HttpUtility.UrlEncode(starname)}%27", $"{_url}ExoSolarSystems/ExoPlanets?%24filter=Name%20eq%20%27"));
 
             }
-
+           
         }
 
         private void Update()
@@ -49,18 +51,18 @@ namespace Assets.Script
 
             var planet = JsonConvert.DeserializeObject<List<Planet>>(uwr.downloadHandler.text).First();
             var infoarray = new List<string>();
-            infoarray.AddIfNotNull($"Radius {planet.RadiusEu}*Earth", planet.RadiusEu);
-            infoarray.AddIfNotNull($"Mass {planet.Mass}*Earth", planet.Mass);
-            infoarray.AddIfNotNull($"Density {planet.Density} Earth", planet.Density);
-            infoarray.AddIfNotNull($"Gravity {planet.Gravity}*Earth", planet.Gravity);
-            infoarray.AddIfNotNull($"Surface Pressure {planet.SurfacePressure}*Earth", planet.SurfacePressure);
-            infoarray.AddIfNotNull($"Escape Velocity {planet.EscapeVelocity}*Earth",planet.EscapeVelocity);
-            infoarray.AddIfNotNull($"Min Temperature {planet.TempMin} °C", planet.EscapeVelocity);
-            infoarray.AddIfNotNull($"Temperature {planet.Temp} °C", planet.Temp);
-            infoarray.AddIfNotNull($"Max Temperature {planet.TempMax} °C", planet.TempMax);
-            infoarray.AddIfNotNull($"It takes {planet.Period} days for the planet to complete an entire revolution around its star °C", planet.Period);
-            infoarray.AddIfNotNull($"Distance from Star {planet.MeanDistance} AU", planet.MeanDistance);
-            infoarray.AddIfNotNull($"Discovered year {planet.DiscYear}", planet.DiscYear);
+            infoarray.AddIfNotNull($"Radius {planet.RadiusEu.DecimalRound()}*Earth", planet.RadiusEu);
+            infoarray.AddIfNotNull($"Mass {planet.Mass.DecimalRound()}*Earth", planet.Mass);
+            infoarray.AddIfNotNull($"Density {planet.Density.DecimalRound()} Earth", planet.Density);
+            infoarray.AddIfNotNull($"Gravity {planet.Gravity.DecimalRound()}*Earth", planet.Gravity);
+            infoarray.AddIfNotNull($"Surface Pressure {planet.SurfacePressure.DecimalRound()}*Earth", planet.SurfacePressure);
+            infoarray.AddIfNotNull($"Escape Velocity {planet.EscapeVelocity.DecimalRound()}*Earth",planet.EscapeVelocity);
+            infoarray.AddIfNotNull($"Min Temperature {planet.TempMin.DecimalRound()} °C", planet.TempMin);
+            infoarray.AddIfNotNull($"Temperature {planet.Temp.DecimalRound()} °C", planet.Temp);
+            infoarray.AddIfNotNull($"Max Temperature {planet.TempMax.DecimalRound()} °C", planet.TempMax);
+            infoarray.AddIfNotNull($"It takes {planet.Period.DecimalRound()} days for the planet to complete an entire revolution around its star", planet.Period);
+            infoarray.AddIfNotNull($"Distance from Star {planet.MeanDistance.DecimalRound()} AU", planet.MeanDistance);
+            infoarray.AddIfNotNull($"Discovered year {(int)planet.DiscYear}", planet.DiscYear);
 
             //TO DO ADD DISC METHOD AND HABITABLE
             var r_Text = GetComponent<TextMeshPro>() ?? gameObject.AddComponent<TextMeshPro>();
@@ -83,8 +85,11 @@ namespace Assets.Script
             var planet= JsonConvert.DeserializeObject<List<Planet>>(uwr.downloadHandler.text).First();
             var exostar = planet.Star;
             var infoarray = new List<string>();
-            infoarray.AddIfNotNull(exostar.Name, exostar.HabZoneMax);
-
+            infoarray.AddIfNotNull($"Radius {exostar.RadiusSu.DecimalRound()}*Sun", exostar.RadiusSu);
+            infoarray.AddIfNotNull($"Mass {exostar.Mass.DecimalRound()}*Sun", exostar.Magnitude);
+            infoarray.AddIfNotNull($"Age {exostar.Age.DecimalRound()} Gyrs", exostar.Age);
+            infoarray.AddIfNotNull($"Temperature {exostar.Temp.DecimalRound()} °C", planet.Temp);
+            infoarray.AddIfNotNull($"Star distance {planet.StarDistance} lightyears from Earth", planet.StarDistance);
             var s_Text = GetComponent<TextMeshPro>() ?? gameObject.AddComponent<TextMeshPro>();
             s_Text.fontSize = 8;
             s_Text.transform.localPosition = new Vector3(0, 0, 8);

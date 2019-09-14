@@ -8,9 +8,11 @@ using Assets.Script.Models.Geo;
 using System.Linq;
 using System;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class AddCelestialObjectsToMap : MonoBehaviour
 {
+    private TextMeshPro _text;
     private string _url = "https://exoplanethunter.com/api/";
     public LongLat _location;
     public List<Star> _stars;
@@ -18,7 +20,10 @@ public class AddCelestialObjectsToMap : MonoBehaviour
 
     private void Awake()
     {
-        SceneManager.LoadScene("SolarInfo", LoadSceneMode.Single);
+        _text = GetComponent<TextMeshPro>() ?? gameObject.AddComponent<TextMeshPro>();
+        _text.fontSize = 18;
+       _text.transform.localPosition = new Vector3(6, 0, 8);
+       _text.text = "Waiting..";
         StartCoroutine(GetAllPlanetsRequest($"{_url}ExoSolarSystems/GetAllPlanets"));
         StartCoroutine(GetStarMarkerRequest($"{_url}Maps/StarMarkers"));
 
@@ -70,8 +75,8 @@ public class AddCelestialObjectsToMap : MonoBehaviour
              var glowBig = Resources.Load(star.Color!=null?Enum.GetName(typeof(StarType), star.Color):"Sun", typeof(Material)) as Material;
              GenerateMarkers(star, glowBig, star.Name);
             }
-  
 
+        Destroy(_text);  
     }
 
     private IEnumerator GetStarMarkerRequest(string uri)

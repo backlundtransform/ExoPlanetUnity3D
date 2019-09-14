@@ -20,7 +20,6 @@ public class VRRaycaster : MonoBehaviour
     public bool isLoaded = false;
     public void Awake()
     {
-       
 
         if (leftHandAnchor == null)
         {
@@ -49,18 +48,8 @@ public class VRRaycaster : MonoBehaviour
                 centerEyeAnchor = center.transform;
             }
         }
-        if (lineRenderer == null)
-        {
-            Debug.LogWarning("Assign a line renderer in the inspector!");
-            lineRenderer = gameObject.AddComponent<LineRenderer>();
-            lineRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-            lineRenderer.receiveShadows = false;
-            lineRenderer.widthMultiplier = 0.02f;
-            lineRenderer.material = new Material(Shader.Find("Sprites/Default"))
-            {
-                color = Color.magenta
-            };
-        }
+     
+
     }
 
  public Transform Pointer
@@ -87,7 +76,7 @@ public class VRRaycaster : MonoBehaviour
         Destroy(text);
         lineRenderer.material.color = Color.magenta;
     }
-    private void GenerateDialog(GameObject text, RaycastHit hit)
+        private void GenerateDialog(GameObject text, RaycastHit hit)
     {
         TextMesh t = text.AddComponent<TextMesh>();
         t.text = hit.collider.gameObject.name;
@@ -100,8 +89,20 @@ public class VRRaycaster : MonoBehaviour
 
     public void Update()
     {
-        if (isLoaded) { 
-        Transform pointer = Pointer;
+        if (isLoaded) {
+            if (lineRenderer == null)
+            {
+                Debug.LogWarning("Assign a line renderer in the inspector!");
+                lineRenderer = gameObject.AddComponent<LineRenderer>();
+                lineRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+                lineRenderer.receiveShadows = false;
+                lineRenderer.widthMultiplier = 0.02f;
+                lineRenderer.material = new Material(Shader.Find("Sprites/Default"))
+                {
+                    color = Color.magenta
+                };
+            }
+            Transform pointer = Pointer;
         if (pointer == null)
         {
             return;
@@ -121,7 +122,7 @@ public class VRRaycaster : MonoBehaviour
         {
                
                 if (lineRenderer != null)
-            {
+                {
                 lineRenderer.SetPosition(1, hit.point);
                
                 }
@@ -137,18 +138,11 @@ public class VRRaycaster : MonoBehaviour
                 if (SceneManager.GetActiveScene().name == "PlanetSystem") {
                     if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
                     {
-                        var solarname = PlayerPrefs.GetString("starId");
-                        if (hit.collider.gameObject.name == solarname)
-                        {
-                            SceneManager.LoadScene("SolarInfo", LoadSceneMode.Single);
-                        }
-                        else
-                        {
+                        
                             PlayerPrefs.SetString("PlanetId", hit.collider.gameObject.name);
                             PlayerPrefs.Save();
                             SceneManager.LoadScene("PlanetInfo", LoadSceneMode.Single);
 
-                        }
                       
                     }
                  world = GameObject.FindWithTag("Player");

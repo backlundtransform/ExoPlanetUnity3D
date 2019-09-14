@@ -26,7 +26,7 @@ namespace Assets.Script.Models
 
         public decimal Radius { get; set; }
 
-        public decimal RadiusSu { get; set; }
+        public decimal? RadiusSu { get; set; }
 
         public decimal? Age { get; set; }
 
