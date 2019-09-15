@@ -8,6 +8,3 @@ sceneSetups:
 - path: Assets/PlanetInfo.unity
   isLoaded: 1
   isActive: 1
-- path: Assets/SolarInfo.unity
-  isLoaded: 1
-  isActive: 0

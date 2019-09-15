@@ -1,4 +1,5 @@
 ﻿using Assets.Script.Models;
+using Assets.Script.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
@@ -27,10 +28,9 @@ namespace Assets.Script
             {
                 StartCoroutine(GetExoPStarByName($"{_url}ExoSolarSystems/GetExoSolarSystemByName?name={starname}", $"{_url}ExoSolarSystems/ExoPlanets?%24filter=Name%20eq%20%27"));
             }
-            else {
-
+            else
+            {
                 StartCoroutine(GetExoPlanetByName($"{_url}ExoSolarSystems/ExoPlanets?%24filter=Name%20eq%20%27{HttpUtility.UrlEncode(planetname)}%27"));
-
             }
            
         }
@@ -61,14 +61,19 @@ namespace Assets.Script
             infoarray.AddIfNotNull($"Temperature {planet.Temp.DecimalRound()} °C", planet.Temp);
             infoarray.AddIfNotNull($"Max Temperature {planet.TempMax.DecimalRound()} °C", planet.TempMax);
             infoarray.AddIfNotNull($"It takes {planet.Period.DecimalRound()} days for the planet to complete an entire revolution around its star", planet.Period);
-            infoarray.AddIfNotNull($"Distance from Star {planet.MeanDistance.DecimalRound()} AU", planet.MeanDistance);
+            infoarray.AddIfNotNull($"Distance from star {planet.MeanDistance.DecimalRound()} AU", planet.MeanDistance);
             infoarray.AddIfNotNull($"Discovered year {(int)planet.DiscYear}", planet.DiscYear);
 
             //TO DO ADD DISC METHOD AND HABITABLE
-            var r_Text = GetComponent<TextMeshPro>() ?? gameObject.AddComponent<TextMeshPro>();
-            r_Text.fontSize = 8;
-            r_Text.transform.localPosition = new Vector3(0, 0, 8);
-            r_Text.text = string.Join("\n", infoarray);
+            var planetmat= Resources.Load(PlanetService.GetPlanetType(planet.Img.Uri), typeof(Material)) as Material;
+            var planetobject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            planetobject.transform.position = new Vector3(0f, 7.11f, 40f);
+            planetobject.transform.localScale = new Vector3(25, 25, 25);
+            planetobject.GetComponent<Renderer>().material = planetmat;
+            var text = GetComponent<TextMeshPro>() ?? gameObject.AddComponent<TextMeshPro>();
+            text.fontSize = 8;
+            text.transform.localPosition = new Vector3(0, 0, 8);
+            text.text = string.Join("\n", infoarray);
 
 
 
@@ -85,15 +90,20 @@ namespace Assets.Script
             var planet= JsonConvert.DeserializeObject<List<Planet>>(uwr.downloadHandler.text).First();
             var exostar = planet.Star;
             var infoarray = new List<string>();
+            var sunmat = Resources.Load(Enum.GetName(typeof(StarType), exostar.Color), typeof(Material)) as Material;
+            var sun = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            sun.transform.position = new Vector3(0f, 7.11f, 40f);
+            sun.transform.localScale = new Vector3(25, 25, 25);
+            sun.GetComponent<Renderer>().material = sunmat;
             infoarray.AddIfNotNull($"Radius {exostar.RadiusSu.DecimalRound()}*Sun", exostar.RadiusSu);
             infoarray.AddIfNotNull($"Mass {exostar.Mass.DecimalRound()}*Sun", exostar.Magnitude);
             infoarray.AddIfNotNull($"Age {exostar.Age.DecimalRound()} Gyrs", exostar.Age);
             infoarray.AddIfNotNull($"Temperature {exostar.Temp.DecimalRound()} °C", planet.Temp);
-            infoarray.AddIfNotNull($"Star distance {planet.StarDistance} lightyears from Earth", planet.StarDistance);
-            var s_Text = GetComponent<TextMeshPro>() ?? gameObject.AddComponent<TextMeshPro>();
-            s_Text.fontSize = 8;
-            s_Text.transform.localPosition = new Vector3(0, 0, 8);
-            s_Text.text = string.Join("\n", infoarray);
+            infoarray.AddIfNotNull($"Star is located {star.Planets.First().StarDistance.DecimalRound()} lightyears from Earth", star.Planets.First().StarDistance);
+            var text = GetComponent<TextMeshPro>() ?? gameObject.AddComponent<TextMeshPro>();
+            text.fontSize = 8;
+            text.transform.localPosition = new Vector3(0, 0, 8);
+            text.text = string.Join("\n", infoarray);
 
 
         }

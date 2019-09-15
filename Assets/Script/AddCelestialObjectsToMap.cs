@@ -20,18 +20,29 @@ public class AddCelestialObjectsToMap : MonoBehaviour
 
     private void Awake()
     {
-        _text = GetComponent<TextMeshPro>() ?? gameObject.AddComponent<TextMeshPro>();
-        _text.fontSize = 18;
-       _text.transform.localPosition = new Vector3(6, 0, 8);
-       _text.text = "Waiting..";
+  
         StartCoroutine(GetAllPlanetsRequest($"{_url}ExoSolarSystems/GetAllPlanets"));
         StartCoroutine(GetStarMarkerRequest($"{_url}Maps/StarMarkers"));
 
+
+    }
+
+    private void Start()
+    {
+        if (_planets == null)
+        {
+            _text = GetComponent<TextMeshPro>() ?? gameObject.AddComponent<TextMeshPro>();
+            _text.fontSize = 18;
+            _text.transform.localPosition = new Vector3(6, 0, 8);
+            _text.text = "Waiting..";
+
+        }
+      
     }
 
 
 
-  private void GenerateMarkers(Star star, Material material, string tag)
+    private void GenerateMarkers(Star star, Material material, string tag)
     {
         var marker = new GameObject();
         marker = GameObject.CreatePrimitive(PrimitiveType.Sphere);

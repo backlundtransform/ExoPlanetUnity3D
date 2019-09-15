@@ -1,5 +1,6 @@
 ﻿using Assets.Script;
 using Assets.Script.Models;
+using Assets.Script.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
@@ -44,10 +45,11 @@ public class RotatePlanet : MonoBehaviour
         habmax.DrawCircle(Vector3.Distance(_sun.transform.position, new Vector3(14.22f, 7.11f, 40f - 0.05f * (float)solarsystem.HabZoneMax)), 0.03f, Color.blue);
         _planets = new List<GameObject>();
 
-        foreach (var planet in solarsystem.Planets) {
+        foreach (var planet in solarsystem.Planets)
+        {
             if (!_planets.Any(p => p.name == planet.Name))
             {
-                Material Planet = Resources.Load(GetPlanetType(planet.Img.Uri), typeof(Material)) as Material;
+            Material Planet = Resources.Load(PlanetService.GetPlanetType(planet.Img.Uri), typeof(Material)) as Material;
             var planetobject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             planetobject.GetComponent<Renderer>().material = Planet;
             var distance = 0.05f * (planet.StarDistance == null ? 0f : (float)planet.StarDistance);
@@ -67,39 +69,6 @@ public class RotatePlanet : MonoBehaviour
 
     }
 
-    private string GetPlanetType(string type) {
-        if (type == "stone")
-        {
-            return "Planet_B";
-        }
-        if (type == "coldstone")
-        {
-            return "Planet_E";
-        }
-        if (type == "hotstone") {
-            return "Planet_L";
-        }
-        if (type == "coldsuperearth") {
-            return "Planet_J";
-        }
-        if (type == "superearth") {
-            return "Planet_D";
-        }
-        if (type == "hotsuperearth") {
-            return "Planet_G";
-        }
-        if (type == "neptunian") {
-            return "Gas_Planet_A";
-        }
-        if (type == "jovian") {
-            return "Gas_Planet_G";
-        }
-        if (type == "hotjupiter") {
-            return "Gas_Planet_G";
-        }
-
-        return "Planet_F";
-    }
 
     public void Update()
     {

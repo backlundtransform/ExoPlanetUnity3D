@@ -364,6 +364,7 @@
     <Compile Include="Assets\Script\Models\StarType.cs" />
     <Compile Include="Assets\Script\Player.cs" />
     <Compile Include="Assets\Script\RotatePlanet.cs" />
+    <Compile Include="Assets\Script\Services\PlanetService.cs" />
     <Compile Include="Assets\Script\UpdateEyeAnchors.cs" />
     <Compile Include="Assets\Script\VRRaycaster.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
