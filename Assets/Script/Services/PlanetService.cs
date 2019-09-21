@@ -8,7 +8,7 @@ namespace Assets.Script.Services
     public class PlanetService
     {
         public static List<string> Discmethods = new List<string> { "radial velocity method", "transit method", "microlensing", "astrometry", "pulsartiming", "imaging", "primarytransit  method", null };
-       public static string GetPlanetType(string type)
+       public static string GetPlanetType(string type, int index)
         {
             var list = new List<string>();
 
@@ -90,7 +90,7 @@ namespace Assets.Script.Services
 
             }
 
-            return list.OrderBy(x => Guid.NewGuid()).FirstOrDefault();
+            return list[index & list.Count];
         }
 
     }

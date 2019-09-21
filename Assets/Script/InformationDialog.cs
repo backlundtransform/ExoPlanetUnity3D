@@ -63,12 +63,12 @@ namespace Assets.Script
             infoarray.AddIfNotNull($"Min Temperature {planet.TempMin.DecimalRound()} °C", planet.TempMin);
             infoarray.AddIfNotNull($"Temperature {planet.Temp.DecimalRound()} °C", planet.Temp);
             infoarray.AddIfNotNull($"Max Temperature {planet.TempMax.DecimalRound()} °C", planet.TempMax);
-            infoarray.AddIfNotNull($"It takes {planet.Period.DecimalRound()} days for the \n planet to complete an entire revolution around its star", planet.Period);
+            infoarray.AddIfNotNull($"It takes {planet.Period.DecimalRound()} days for the\n planet to complete an entire\n revolution around its star", planet.Period);
             infoarray.AddIfNotNull($"Distance from star {planet.MeanDistance.DecimalRound()} AU", planet.MeanDistance);
             infoarray.AddIfNotNull($"Discovered year {(int)planet.DiscYear}", planet.DiscYear);
             infoarray.AddIfNotNull($"Discovered by {PlanetService.Discmethods[planet.DiscMethod]}", PlanetService.Discmethods[planet.DiscMethod] == null? null: (decimal?)1);
 
-            var planetmat= Resources.Load(PlanetService.GetPlanetType(planet.Img.Uri), typeof(Material)) as Material;
+            var planetmat= Resources.Load(PlanetService.GetPlanetType(planet.Img.Uri, planet.Id), typeof(Material)) as Material;
             var planetobject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             planetobject.transform.position = new Vector3(0f, 7.11f, 40f);
             planetobject.transform.localScale = new Vector3(25, 25, 25);
