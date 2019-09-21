@@ -23,7 +23,9 @@ namespace Assets.Script
             var planetname = PlayerPrefs.GetString("PlanetId");
             var starname = PlayerPrefs.GetString("starId");
 
-        
+
+            var text = (int)1.3d / 10;
+
             if (planetname== starname)
             {
                 StartCoroutine(GetExoPStarByName($"{_url}ExoSolarSystems/GetExoSolarSystemByName?name={starname}", $"{_url}ExoSolarSystems/ExoPlanets?%24filter=Name%20eq%20%27"));
@@ -51,6 +53,7 @@ namespace Assets.Script
 
             var planet = JsonConvert.DeserializeObject<List<Planet>>(uwr.downloadHandler.text).First();
             var infoarray = new List<string>();
+            infoarray.AddIfNotNull(planet.Name, 1);
             infoarray.AddIfNotNull($"Radius {planet.RadiusEu.DecimalRound()}*Earth", planet.RadiusEu);
             infoarray.AddIfNotNull($"Mass {planet.Mass.DecimalRound()}*Earth", planet.Mass);
             infoarray.AddIfNotNull($"Density {planet.Density.DecimalRound()} Earth", planet.Density);
@@ -60,11 +63,11 @@ namespace Assets.Script
             infoarray.AddIfNotNull($"Min Temperature {planet.TempMin.DecimalRound()} °C", planet.TempMin);
             infoarray.AddIfNotNull($"Temperature {planet.Temp.DecimalRound()} °C", planet.Temp);
             infoarray.AddIfNotNull($"Max Temperature {planet.TempMax.DecimalRound()} °C", planet.TempMax);
-            infoarray.AddIfNotNull($"It takes {planet.Period.DecimalRound()} days for the planet to complete an entire revolution around its star", planet.Period);
+            infoarray.AddIfNotNull($"It takes {planet.Period.DecimalRound()} days for the \n planet to complete an entire revolution around its star", planet.Period);
             infoarray.AddIfNotNull($"Distance from star {planet.MeanDistance.DecimalRound()} AU", planet.MeanDistance);
             infoarray.AddIfNotNull($"Discovered year {(int)planet.DiscYear}", planet.DiscYear);
+            infoarray.AddIfNotNull($"Discovered by {PlanetService.Discmethods[planet.DiscMethod]}", PlanetService.Discmethods[planet.DiscMethod] == null? null: (decimal?)1);
 
-            //TO DO ADD DISC METHOD AND HABITABLE
             var planetmat= Resources.Load(PlanetService.GetPlanetType(planet.Img.Uri), typeof(Material)) as Material;
             var planetobject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             planetobject.transform.position = new Vector3(0f, 7.11f, 40f);
@@ -95,6 +98,8 @@ namespace Assets.Script
             sun.transform.position = new Vector3(0f, 7.11f, 40f);
             sun.transform.localScale = new Vector3(25, 25, 25);
             sun.GetComponent<Renderer>().material = sunmat;
+            infoarray.AddIfNotNull(exostar.Name,1);
+            infoarray.AddIfNotNull($"Type {exostar.Type}", 1);
             infoarray.AddIfNotNull($"Radius {exostar.RadiusSu.DecimalRound()}*Sun", exostar.RadiusSu);
             infoarray.AddIfNotNull($"Mass {exostar.Mass.DecimalRound()}*Sun", exostar.Magnitude);
             infoarray.AddIfNotNull($"Age {exostar.Age.DecimalRound()} Gyrs", exostar.Age);
