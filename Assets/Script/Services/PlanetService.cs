@@ -90,7 +90,7 @@ namespace Assets.Script.Services
 
             }
 
-            return list[index & list.Count];
+            return list[index % list.Count];
         }
 
     }
