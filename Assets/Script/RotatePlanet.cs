@@ -19,7 +19,9 @@ public class RotatePlanet : MonoBehaviour
 
     public void Start()
     {
-      var solarname  =PlayerPrefs.GetString("starId");
+        PlayerPrefs.SetInt("hit", 0);
+        PlayerPrefs.Save();
+        var solarname  =PlayerPrefs.GetString("starId");
         StartCoroutine(GetExoSolarSystemByName($"{_url}ExoSolarSystems/GetExoSolarSystemByName?name={solarname}"));
 
     }
@@ -29,7 +31,7 @@ public class RotatePlanet : MonoBehaviour
         yield return uwr.SendWebRequest();
        var solarsystem= JsonConvert.DeserializeObject<Star>(uwr.downloadHandler.text);
   
-        Material Sun = Resources.Load(Enum.GetName(typeof(StarType), solarsystem.Color), typeof(Material)) as Material;
+       var Sun = Resources.Load(Enum.GetName(typeof(StarType), solarsystem.Color), typeof(Material)) as Material;
         _sun = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         _sun.transform.position = new Vector3(14.22f, 7.11f, 40f);
         var starradius = 0.05f * (float)solarsystem.Radius;
@@ -75,9 +77,12 @@ public class RotatePlanet : MonoBehaviour
         var i = 0.1f* _planets.Count();
         foreach (var planet in _planets.GroupBy(p => p.name).Select(g => g.FirstOrDefault()).ToList())
         {
+            if (PlayerPrefs.GetInt("hit") == 0)
+            { 
             planet.transform.RotateAround(_sun.transform.localPosition, Vector3.up, Time.deltaTime+i);
 
             i = i - 0.1f;
+            }
         }
     }
 }

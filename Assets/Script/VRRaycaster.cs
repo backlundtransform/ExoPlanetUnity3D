@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -71,9 +72,13 @@ public class VRRaycaster : MonoBehaviour
     }
   private  IEnumerator Wait(GameObject text, RaycastHit hit)
     {
+        PlayerPrefs.SetInt("hit", Convert.ToInt32(hit.collider.gameObject.name[0] != ' '));
+        PlayerPrefs.Save();
         lineRenderer.material.color = hit.collider.gameObject.name[0] != ' ' ? Color.green : Color.magenta;
         yield return new WaitForSeconds(1);
         Destroy(text);
+        PlayerPrefs.SetInt("hit", 0);
+        PlayerPrefs.Save();
         lineRenderer.material.color = Color.magenta;
     }
         private void GenerateDialog(GameObject text, RaycastHit hit)
@@ -117,7 +122,8 @@ public class VRRaycaster : MonoBehaviour
         }
 
 
-        RaycastHit hit;
+            RaycastHit hit;
+          
         if (Physics.Raycast(laserPointer, out hit, maxRayDistance, ~excludeLayers))
         {
                
