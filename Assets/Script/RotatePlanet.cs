@@ -51,7 +51,7 @@ public class RotatePlanet : MonoBehaviour
         {
             if (!_planets.Any(p => p.name == planet.Name))
             {
-            Material Planet = Resources.Load(PlanetService.GetPlanetType(planet.Img.Uri, planet.Id), typeof(Material)) as Material;
+            var Planet = Resources.Load(PlanetService.GetPlanetType(planet.Img.Uri, planet.Id), typeof(Material)) as Material;
             var planetobject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             planetobject.GetComponent<Renderer>().material = Planet;
             var distance = 0.05f * (planet.StarDistance == null ? 0f : (float)planet.StarDistance);

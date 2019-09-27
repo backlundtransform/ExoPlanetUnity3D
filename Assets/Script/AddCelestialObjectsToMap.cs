@@ -7,7 +7,6 @@ using Newtonsoft.Json;
 using Assets.Script.Models.Geo;
 using System.Linq;
 using System;
-using UnityEngine.SceneManagement;
 using TMPro;
 
 public class AddCelestialObjectsToMap : MonoBehaviour
@@ -18,17 +17,19 @@ public class AddCelestialObjectsToMap : MonoBehaviour
     public List<Star> _stars;
     public static List<Planet> _planets;
 
+
+
     private void Awake()
     {
-  
+      
         StartCoroutine(GetAllPlanetsRequest($"{_url}ExoSolarSystems/GetAllPlanets"));
         StartCoroutine(GetStarMarkerRequest($"{_url}Maps/StarMarkers"));
-
-
+        
     }
 
     private void Start()
     {
+
         if (_planets == null)
         {
             _text = GetComponent<TextMeshPro>() ?? gameObject.AddComponent<TextMeshPro>();

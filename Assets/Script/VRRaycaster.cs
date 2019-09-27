@@ -19,9 +19,10 @@ public class VRRaycaster : MonoBehaviour
     public GameObject world;
     private Vector3 _playerHeadPos = Vector3.zero;
     public bool isLoaded = false;
+
     public void Awake()
     {
-
+       
         if (leftHandAnchor == null)
         {
             Debug.LogWarning("Assign LeftHandAnchor in the inspector!");
