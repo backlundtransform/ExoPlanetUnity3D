@@ -158,8 +158,8 @@ PlayerSettings:
     iOS: com.oculus.UnitySample
   buildNumber: {}
   AndroidBundleVersionCode: 2
-  AndroidMinSdkVersion: 19
-  AndroidTargetSdkVersion: 21
+  AndroidMinSdkVersion: 21
+  AndroidTargetSdkVersion: 23
   AndroidPreferredInstallLocation: 0
   aotOptions: 
   stripEngineCode: 1
@@ -246,8 +246,8 @@ PlayerSettings:
   AndroidTargetArchitectures: 5
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: 
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: D:/GitHub/key/user.keystore
+  AndroidKeyaliasName: exoplanets
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
