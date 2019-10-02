@@ -362,6 +362,7 @@
     <Compile Include="Assets\Script\Models\SceneVariables.cs" />
     <Compile Include="Assets\Script\Models\Star.cs" />
     <Compile Include="Assets\Script\Models\StarType.cs" />
+    <Compile Include="Assets\Script\OculusAppEntitlementCheck.cs" />
     <Compile Include="Assets\Script\Player.cs" />
     <Compile Include="Assets\Script\RotatePlanet.cs" />
     <Compile Include="Assets\Script\Services\PlanetService.cs" />

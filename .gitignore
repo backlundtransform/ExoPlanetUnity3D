@@ -40,3 +40,4 @@ Library/metadata/
 Library/metadata
 Assets/Plugins/Android/assets/
 ExoplanetsVR.apk
+Assets/Script/OculusAppEntitlementCheck.cs
