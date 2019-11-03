@@ -9,3 +9,6 @@ Here is a promo video of the new app
 
 
 https://www.youtube.com/watch?v=8xswMVWtTng
+
+
+link to oculus store https://www.oculus.com/experiences/go/2117987304980708/
